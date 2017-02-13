@@ -121,84 +121,83 @@ The following is a general description of the product and its requirements. For 
 \section{Functional Requirements}
 \label{sec:functional_requirements}
 % Begin Section
-This section of the SRS should contain all of the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements, and testers to test that the system satisfies those requirements. Throughout this section, every stated requirement should be externally perceivable by users, operators, or other external systems. These requirements should include at a minimum a description of every input (stimulus) into the system, every output (response) from the system, and all functions performed by the system in response to an input or in support of an output.
 
-You normally have two options for organizing your functional requirements:
 \begin{enumerate}
-	\item Organize first by \emph{business events}, then by \emph{viewpoints}
-	\item Organize first by \emph{viewpoints}, then by \emph{business events}
-\end{enumerate}
-Choose the one which makes the most sense.
-
-For example, if you wish to organization by business events:
-\begin{enumerate}[{BE}1.]
-	\item Business Event
-	\begin{enumerate}[{VP1}.1]
-		\item Viewpoint
+	\item The user launches the application
+	\begin{enumerate}
+		\item Android Device OS
 			\begin{enumerate}
-				\item Requirement
-				\item Requirement
-				\item \dots
+				\item The system launcher starts the application
 			\end{enumerate}
-		\item Viewpoint
+		\item User
 			\begin{enumerate}
-				\item Requirement
-				\item Requirement
-				\item \dots
+				\item The system provides a view of all the sub--systems in their present state to the user
+				\item The system should allow the user to select a sub-system to interact with
 			\end{enumerate}
-		\item \dots
 	\end{enumerate}
-	\item Business Event
-	\begin{enumerate}[{VP2}.1]
-		\item Viewpoint
+	\item The user wants to interact with a sub-system
+	\begin{enumerate}
+		\item User
 			\begin{enumerate}
-				\item Requirement
-				\item Requirement
-				\item \dots
+				\item The system should show all stimuli that can stimulate the sub--system
+				\item The system should allow the user to select a stimuli
+				\item The system must allow the user to control the stimuli
+				\item The system must respond to the stimuli
 			\end{enumerate}
-		\item Viewpoint
+	\end{enumerate}
+	\item The application is updated
+	\begin{enumerate}
+		\item Android Device OS
 			\begin{enumerate}
-				\item Requirement
-				\item Requirement
-				\item \dots
+				\item The system must notify the operating system that an update is required for the system
 			\end{enumerate}
-		\item \dots
+		\item User
+			\begin{enumerate}
+				\item The system must prompt the user to update the system when the application is launched
+			\end{enumerate}
 	\end{enumerate}
-\end{enumerate}
-
-\underline{OR}, if you wish to organization by viewpoints:
-\begin{enumerate}[{VP}1.]
-	\item Viewpoint 
-	\begin{enumerate}[{BE1}.1]
-		\item Business Event
-		\begin{enumerate}
-			\item Requirement
-			\item Requirement
-			\item \dots
-		\end{enumerate}
-		\item Business Event
-		\begin{enumerate}
-			\item Requirement
-			\item Requirement
-			\item \dots
-		\end{enumerate}
-		\item \dots
+	\item Time passes within the system
+	\begin{enumerate}
+		\item User
+			\begin{enumerate}
+				\item The system should update the attributes that have changes since the last time period
+				\item The system should show the user the result of the stimuli from the previous time period
+			\end{enumerate}
 	\end{enumerate}
-	\item Viewpoint
-	\begin{enumerate}[{BE2}.1]
-		\item Business Event
-		\begin{enumerate}
-			\item Requirement
-			\item Requirement
-			\item \dots
-		\end{enumerate}
-		\item Business Event
-		\begin{enumerate}
-			\item Requirement
-			\item Requirement
-			\item \dots
-		\end{enumerate}
-		\item \dots
+	\item The user wants to change settings of the system
+	\begin{enumerate}
+		\item User
+			\begin{enumerate}
+				\item The system should provide an interface for editing values of how the system works based on customizable aspects of the system
+				\item The system should store these new settings and incorporate them into the system’s functionality
+			\end{enumerate}
+	\end{enumerate}
+	\item The user wants to share snapshot of the system
+	\begin{enumerate}
+		\item Android Device OS
+			\begin{enumerate}
+				\item The system should be able to use the OS to interact with social media applications to send data from system to external applications
+			\end{enumerate}
+		\item Social Media Application
+			\begin{enumerate}
+				\item The system should be able to provide data that is compatible with the specified social media framework
+			\end{enumerate}
+			\item User
+			\begin{enumerate}
+				\item The system should provide a means of sharing user’s system data via social media
+			\end{enumerate}
+	\end{enumerate}
+	\item The user wants to shut down the system
+	\begin{enumerate}
+		\item Android Device OS
+			\begin{enumerate}
+				\item The operating system should close the application
+			\end{enumerate}
+		\item User
+			\begin{enumerate}
+				\item The system should provide a way to close the current running of the system’s processes
+				\item The system should provide a way to save progress within the system and sub--systems
+			\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
 
