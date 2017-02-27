@@ -41,11 +41,11 @@ The following is a description of the product to be developed, as well as an ove
 
 \subsection{Purpose}
 \label{sub:purpose}
-	SpaceBase Ephemeris (SBE) is a mobile simulation game that models the overall behavior of a space settlement on a celestial body, i.e. a real-life system. The game represents how different sub-systems interact with each other and affect the overall system. It replicates how each of the sub-systems of a space base react to different stimuli from outside of the system. Therefore, the player must ensure that the sub-systems are working in the desired fashion to keep the base operating. The purpose of this document is to provide a general description of this project and to specify the requirements for this game. It is meant to be a form of communication between the developers of this game and its clients, i.e. Dr. Ridha Khedri and the teaching assistants for SFWR ENG 3A04. The SRS is also meant to be used as a reference by the developers to ensure that the specified requirements have been fulfilled.
+	The purpose of this document is to provide a general description of this project and to specify the requirements for this game. The focus of this SRS is the development of the software product. It is meant to be a form of communication between the developers of this game and its clients, i.e. Dr. Ridha Khedri and the teaching assistants for SFWR ENG 3A04. The SRS is also meant to be used as a reference by the developers to ensure that the specified requirements have been fulfilled.
 
 \subsection{Scope}
 \label{sub:scope}
-	The focus of this SRS is the development of the software product, SBE. The game mimics the operations of a space settlement, and places the user as the head of the base. Hence, the key duty of the player is to ensure that the base remains operating. The player does this by keeping an eye on all the sub-systems and maintaining them whenever there is a need. This will be done by assigning tasks to all the members of the base, which could be anything from fixing a breach in the walls of the base to interaction with alien flora and fauna. If there are multiple stimuli happening concurrently, then the player must prioritize the tasks, based on how critical they are and on what level they affect the safety of the community. The main objective of this game is to provide entertainment to its users. However, it will also develop time management skills of the users, as well as improve their multitasking abilities. 
+	SpaceBase Ephemeris (SBE) is a mobile simulation game that models the overall behavior of a space settlement on a celestial body, i.e. a real-life system. The game represents how different sub-systems interact with each other and affect the overall system. It replicates how each of the sub-systems of a space base react to different stimuli from outside of the system. Therefore, the player must ensure that the sub-systems are working in the desired fashion to keep the base operating. The game mimics the operations of a space settlement, and places the user as the head of the base. Hence, the key duty of the player is to ensure that the base remains operating. The player does this by keeping an eye on all the sub-systems and maintaining them whenever there is a need. This will be done by assigning tasks to all the members of the base, which could be anything from fixing a breach in the walls of the base to interaction with alien flora and fauna. If there are multiple stimuli happening concurrently, then the player must prioritize the tasks, based on how critical they are and on what level they affect the safety of the community. The main objective of this game is to provide entertainment to its users. However, it will also develop time management skills of the users, as well as improve their multitasking abilities. 
 
 \subsection{Definitions, Acronyms, and Abbreviations}
 \label{sub:definitions_acronyms_and_abbreviations}
@@ -59,13 +59,7 @@ The following is a description of the product to be developed, as well as an ove
 
 \subsection{Overview}
 \label{sub:overview}
-	This document describes the product software that is to be developed as well as the requirements specifications.
-\begin{itemize}
-	\item The second section of this document provides an overall description of the game. It provides product perspective when compared to another related product. It describes major functions of the product as well as the user characteristics. It also explains the constraints of the system as well as the assumptions for this project.
-	\item The third section of this document specifies the functional software requirements of this game. It provides sufficient details to design a system with the specific requirements and to test that the design has fulfilled those requirements. 
-	\item The final section of the document is the non-functional requirements, which vary from different perceptions and are used to ensure successful integration of the game into society.
-	\item A Division of Labour section is also placed at the end of the document which details the contributions of each team member.
-\end{itemize}
+	This document describes the product software that is to be developed as well as the requirements specifications. The second section of this document provides an overall description of the game. It provides product perspective when compared to another related product. It describes major functions of the product as well as the user characteristics. It also explains the constraints of the system as well as the assumptions for this project. The third section of this document specifies the functional software requirements of this game. It provides sufficient details to design a system with the specific requirements and to test that the design has fulfilled those requirements. The final section of the document is the non-functional requirements, which vary from different perceptions and are used to ensure successful integration of the game into society. A Division of Labour section is also placed at the end of the document which details the contributions of each team member.
 
 % End Section
 
@@ -76,21 +70,15 @@ The following is a general description of the product and its requirements. For 
 
 \subsection{Product Perspective}
 \label{sub:product_perspective}
-	SBE is an independent and totally self-contained system. It does not require network communication to function normally. The game will contain elements of various existing simulation games such as [[dwarf fortress]], but is not intended to completely emulate any of them. The simulation is intended for entertainment purposes only, so bears only a thematic relationship to some scientific simulation software. As the game is an Android app, it may be distributed on the Google Play Store, but that does not constitute part of the system.
+	SBE is an independent and \textbf{totally self-contained} system. It does not require network communication to function normally. The game will contain elements of various existing simulation games such as Dwarf Fortress, but is not intended to completely emulate any of them. The simulation is intended for entertainment purposes only, so bears only a thematic relationship to some scientific simulation software. As the game is an Android app, it may be distributed on the Google Play Store, but the Store is not part of the system. 
 
 \subsection{Product Functions}
 \label{sub:product_functions}
-	\begin{enumerate}
-		\item The user will be able to view compositions of various sub-views of the system. Each sub-view corresponds to a different subsystem.
-		\item The user will be able to stimulate the system. Each stimuli will be able to one or many subsystems, with reactions cascading appropriately. Each subsystem will have at least 1 stimuli.
-		\item The application will simulate the various subsystems and their interactions.
-		\item Major ways the user will be able to interact with the system include: expanding their station, issuing orders to the population, and managing power and atmospheric controls of their station.
-		\item \textbf{Creative/Innovative:} The user will be able to save the state of their game, and share the corresponding file with other users, who will in turn be able to load it.
-	\end{enumerate}
+The user will be able to view compositions of various sub-views of the system. Each sub-view corresponds to a different subsystem. The user will be able to stimulate the system. Each stimuli will be able to one or many subsystems, with reactions cascading appropriately. Each subsystem will have at least 1 stimuli. The application will simulate the various subsystems and their interactions. Major ways the user will be able to interact with the system include: expanding their station, issuing orders to the population, and managing power and atmospheric controls of their station. \textbf{Creative/Innovative:} The user will be able to save the state of their game, and share the corresponding file with other users, who will in turn be able to load it.
 
 \subsection{User Characteristics}
 \label{sub:user_characteristics}
-	Users are expected to have at least a high school level diploma and reading level. Users are expected to be generally familiar with the Android operating system and Android apps. Users are expected to have only a cursory understanding of the subject matter, as SBE is intended for entertainment rather than scientific simulation.
+	Users are expected to be fluent in English, and at least 10 years of age. Users are expected to be generally familiar with the Android operating system and Android apps. Users are expected to have only a cursory understanding of the subject matter, as SBE is intended for entertainment rather than scientific simulation.
 
 \subsection{Constraints}
 \label{sub:constraints}
@@ -111,6 +99,7 @@ The following is a general description of the product and its requirements. For 
 
 \subsection{Apportioning of Requirements}
 \label{sub:apportioning_of_requirements}
+	Section N/A as development has not begun.
 	The following requirements may be delayed until future versions of the system.
 	\begin{enumerate}
 		\item Functionality allowing the user to showcase their system (for example on social media).
