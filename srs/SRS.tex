@@ -59,7 +59,7 @@ The following is a description of the product to be developed, as well as an ove
 
 \subsection{Overview}
 \label{sub:overview}
-	This document describes the product software that is to be developed as well as the requirements specifications. The second section of this document provides an overall description of the game. It provides product perspective when compared to another related product. It describes major functions of the product as well as the user characteristics. It also explains the constraints of the system as well as the assumptions for this project. The third section of this document specifies the functional software requirements of this game. It provides sufficient details to design a system with the specific requirements and to test that the design has fulfilled those requirements. The final section of the document is the non-functional requirements, which vary from different perceptions and are used to ensure successful integration of the game into society. A Division of Labour section is also placed at the end of the document which details the contributions of each team member.
+	This document describes the product software that is to be developed as well as the requirements specifications. The second section of this document provides an overall description of the game. It provides product perspective when compared to another related product. It describes major functions of the product as well as the user characteristics. It also explains the constraints of the system as well as the assumptions for this project. The third section of this document specifies the functional software requirements of this game. It provides sufficient details to design a system with the specific functionality specified in the requirements and to test that the design has fulfilled those requirements. The final section of the document is the non-functional requirements. A Division of Labour section is also placed at the end of the document which details the contributions of each team member.
 
 % End Section
 
@@ -70,15 +70,16 @@ The following is a general description of the product and its requirements. For 
 
 \subsection{Product Perspective}
 \label{sub:product_perspective}
-	SBE is largely independent and self-contained, but does interact with social media systems in the case that the user decides to post a snap-shot of their gamestate. It does not require network communication for other aspect. As the game is an Android app, it may be distributed on the Google Play Store, but the Store is not part of the system. The game will contain elements of various existing simulation games, but is not intended to completely emulate any of them. The simulation is intended for entertainment purposes only, so bears only a thematic relationship to some scientific simulation software. 
+	SBE is largely independent and self-contained, but does interact with social media systems in the case that the user decides to post a snap-shot of their gamestate. It does not require network communication for other aspects. As the game is an Android app, it may be distributed on the Google Play Store, but the Store is not part of the system. The game will contain elements of various existing simulation games, but is not intended to completely emulate any of them. The simulation is intended for entertainment purposes only, so bears only a thematic relationship to some scientific simulation software. 
 
 \subsection{Product Functions}
 \label{sub:product_functions}
-The user will be able to view compositions of various sub-views of the system. Each sub-view corresponds to a different subsystem. The user will be able to stimulate the system. Each stimuli will be able to one or many subsystems, with reactions cascading appropriately. Each subsystem will have at least 1 stimuli. The application will simulate the various subsystems and their interactions. Major ways the user will be able to interact with the system include: expanding their station, issuing orders to the population, and managing power and atmospheric controls of their station. \textbf{Creative/Innovative:} The user will be able to save the state of their game, and share the corresponding file with other users, who will in turn be able to load it.
+The user will be able to view compositions of various sub-views of the system. Each sub-view corresponds to a different subsystem. The 3 sub-systems of the application are the atmospheric system, power system, and the station's population. The user will be able to adjust the atmospheric pressure in their station, and control the flow of gasses with airlocks and other devices which the user can operate. The user will be able to generate power in the station, control the flow of power with wires, and control which devices draw power from the supply. In the event of failures with atmospheric contain or power transfer, the subsystems will respond appropriately. They will be able to issue orders to the population of the station, who will follow those order autonomously. The station population will react to changes in the atmospheric pressure, and operate devices connected to the power network. The user will be able to save the state of their game, and share the corresponding file with other users, who will in turn be able to load it. \textbf{(Creative/Innovative)} The user will be able to post a snapshot of their game-state to social media from within the application.
+
 
 \subsection{User Characteristics}
 \label{sub:user_characteristics}
-	Users are expected to be fluent in English, and at least 10 years of age. Users are expected to be generally familiar with the Android operating system and Android apps. Users are expected to have only a cursory understanding of the subject matter, as SBE is intended for entertainment rather than scientific simulation.
+	Users are expected to be fluent in English, and at least 10 years of age. Users are expected to be generally familiar with the Android operating system and Android apps. Users are expected to have only a cursory understanding of the subject matter, as SBE is intended for entertainment rather than scientific simulation. Most users are assumed to have appropriate social-media account, but it is not a requirement to use the system.
 
 \subsection{Constraints}
 \label{sub:constraints}
@@ -92,29 +93,28 @@ The user will be able to view compositions of various sub-views of the system. E
 \label{sub:assumptions_and_dependencies}
 	The following are assumptions that affect the requirements for the system.
 	\begin{enumerate}
-	\item It is assumed that the device running the application will have the Android operating system available.
-	\item It is assumed that the application will be run with sufficient privileges to read and write necessary files on the device.
-	\item  It is assumed that the device will have access to the Google Play Store (or an alternate distribution method if one is chosen).
+	\item It is assumed that the device running the application will have the Android operating system available, with sufficient resources available.
+	\item It is assumed that the device running the application will have internet access.
 	\end{enumerate}
 
 \subsection{Apportioning of Requirements}
 \label{sub:apportioning_of_requirements}
 	Section N/A as development has not begun.
-	The following requirements may be delayed until future versions of the system.
-	\begin{enumerate}
-		\item Functionality allowing the user to showcase their system (for example on social media).
-		\item Functionality allowing the user to swap between multiple saved states within the application.
-		\item Non-token graphical features.
-		\item More than the minimum number of subsystems.
-		\item Ability to enable or disable subsystems at runtime.
-	\end{enumerate}
+	%The following requirements may be delayed until future versions of the system.
+	%\begin{enumerate}
+	%	\item Functionality allowing the user to showcase their system (for example on social media).
+	%	\item Functionality allowing the user to swap between multiple saved states within the application.
+	%	\item Non-token graphical features.
+	%	\item More than the minimum number of subsystems.
+	%	\item Ability to enable or disable subsystems at runtime.
+	%\end{enumerate}
 
 \section{Functional Requirements}
 \label{sec:functional_requirements}
 % Begin Section
 
 \begin{enumerate}
-	\item The user launches the application
+	\item BE1. The user launches the application
 	\begin{enumerate}
 		\item User
 			\begin{enumerate}
@@ -122,24 +122,35 @@ The user will be able to view compositions of various sub-views of the system. E
 				\item The system must allow the user to select a sub-system to interact with
 			\end{enumerate}
 	\end{enumerate}
-	\item The user wants to interact with a sub-system
+	\item BE2. The user wants to adjust an atmospheric or power controlling device within the station.
 	\begin{enumerate}
 		\item User
 			\begin{enumerate}
-				\item The system must show all stimuli that can stimulate the sub--system
-				\item The system must allow the user to select a stimuli
-				\item The system must allow the user to control the stimuli
-				\item The system must respond to the stimuli
+				\item The system must allow the user to select the device.
+				\item Once an atmospheric device is selected, the system must display the atmospheric/power state of the station.
+				\item The system must allow the user to select an operation for the device and any appropriate values.
+				\item The appropriate subsystem must react to any operations input by the user, which must cascade to other subsystems.
 			\end{enumerate}
 	\end{enumerate}
-	\item The user wants to update the application to the latest version
+	\item BE3. The user wants to issue a work order the station population.
+	\begin{enumerate}
+		\item User
+			\begin{enumerate}
+				\item The system must allow the user to select various aspects of the station to be manipulated.
+				\item The system must display the available population to carry out the order.
+				\item The system must allow the user to specify the order to be issued.
+				\item The system must display the progress of the order as it is completed and correctly react the final result.
+			\end{enumerate}
+	\end{enumerate}
+	\item BE4. The user wants to update the application to the latest version
 	\begin{enumerate}
 		\item User
 			\begin{enumerate}
 				\item The system must prompt the user to update the system when the application is launched
+				\item The system must allow the user to open the Play Store and download the latest version.
 			\end{enumerate}
 	\end{enumerate}
-	\item The user wants to change settings of the system
+	\item BE5. The user wants to change overall functionality settings of the system
 	\begin{enumerate}
 		\item User
 			\begin{enumerate}
@@ -147,7 +158,7 @@ The user will be able to view compositions of various sub-views of the system. E
 				\item The system must store these new settings and incorporate them into the system’s functionality
 			\end{enumerate}
 	\end{enumerate}
-	\item The user wants to share snapshot of the system
+	\item BE6. The user wants to share a snapshot of the system
 	\begin{enumerate}
 		\item Social Media Application
 			\begin{enumerate}
@@ -158,12 +169,13 @@ The user will be able to view compositions of various sub-views of the system. E
 				\item The system must provide a means of sharing user’s system data via social media
 			\end{enumerate}
 	\end{enumerate}
-	\item The user wants to shut down the system
+	\item BE7. The user wants to save the game-state
 	\begin{enumerate}
 		\item User
 			\begin{enumerate}
-				\item The system must provide a way to close the current running of the system’s processes
-				\item The system must provide a way to save progress within the system and sub--systems
+				\item The system must display an option for saving the game.
+				\item The system must allow the user to specify a save file name and location.
+				\item The system must save the game at the requested location.
 			\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
@@ -174,81 +186,72 @@ The user will be able to view compositions of various sub-views of the system. E
 \begin{enumerate}
 \item LF1. The application must have graphical interface (not just textual) for the users to use.
 \item LF2. The graphical interface must be spannable, zoomable, and rotatable.
-\item LF4. The product shall be attractive to all audiences. 
+\item LF3. The majority of the intended users must find the product attractive. 
 \end{enumerate}
 
 \subsubsection{Style Requirements}
 \begin{enumerate}
-	\item S1. N.A.
+	\item S1. The system must use the native Android application styling.
 \end{enumerate}
 
 \subsection{Usability and Humanity Requirements}
 \subsubsection{Ease of Use Requirements}
 \begin{enumerate}
 	\item UH1. The application shall be easy for anybody of age 13 and up to use.
-	\item UH2. The application shall include a brief tutorial or manual to guide new users.
-	\item UH3. The application shall introduce game mechanics step-by-step so the users are not overwhelmed.
-	\item UH4. The application shall be used by anyone, by substituting symbols with language. 
+	\item UH2. The application shall display the current game-state clearly.
 \end{enumerate}
 
 \subsubsection{Personalization and Internalization Requirements}
 \begin{enumerate}
- \item UH1. The application shall create memory space in the device to store data.
- \item UH2. There will only be English option, however everything shall be understood through symbolic icons.
- \item UH3. Personal settings or game files shall be able to be saved, and loaded at user�s will.
+ \item PI1. Personal settings or game files shall be able to be saved, and loaded at user's will.
 \end{enumerate}
 
 \subsubsection{Learning Requirements}
 \begin{enumerate}
-	\item LER1. This application shall be easy for anyone over 13 to learn.
-	\item LER2. The application will provide a short learning tutorial to ease of any confusion.
+	\item LER1. The application shall include a brief tutorial or manual to guide new users which introduces the game concepts, acronyms, terms, and settings step-by-step.
 \end{enumerate}
 
 \subsubsection{Understandability and Politeness Requirements}
 \begin{enumerate}
-	\item UPR1. The application must use symbols and words that are naturally understood.
-	\item UPR2. Any abbreviations or acronyms must be easily looked up or understood.
+	\item UPR1. There will only be English option, however easy to understand symbolic icons will be used in the interface when possible.
 \end{enumerate}
 
 \subsubsection{Accessibility Requirements}
 \begin{enumerate}
-	\item ACCR1. This application shall conform to the Canadians with Disabilities Act.
+	\item ACCR1. This application shall be accessible to individuals with sufficient visual and mechanical capabilities to operate the base Android operating system.
 \end{enumerate}
 
 \subsection{Performance Requirements}
 \subsubsection{Speed and Latency Requirements}
 \begin{enumerate}
-	\item SOLR1. Any interaction between the user and the system must have a maximum response time of 1 second.
-	\item SOLR2. Any interaction relating to changing the view of the system must have an instant response time.
+	\item SOLR1. Any interaction between the user and the application must have a maximum response time of 1 second.
+	\item SOLR2. The view of the application must update in real-time (.1 second delay) to the state of the station.
 \end{enumerate}
 
 \subsubsection{Safety-Critical Requirements}
 \begin{enumerate}
-	\item SCR1. Any colour scheme must not induce dizziness, tiredness, or seizures.
-	\item SCR2. The graphics must be low enough to not overheat the GPU.
+	\item SCR1. Any graphics used must not induce dizziness, tiredness, or seizures.
 \end{enumerate}
 
 \subsubsection{Precision or Accuracy Requirements}
 \begin{enumerate}
-	\item PAR1. All monetary values must be to two decimal places.
-	\item PAR2. Any other critical values the system depends on must be to six significant digits.
+	\item PAR2. Any critical values the system depends on must be accurate to six significant digits.
 \end{enumerate}
 
 \subsubsection{Reliability and Availability Requirements}
 \begin{enumerate}
-	\item PR1. The application must not crash before saving user progress and data.
-	\item PR2. No data must be lost even in case of system failure.
-	\item PR3. This application must be available 24 hours per day, 365 days per year. 
+	\item RAR1. The application must have at least 95\% uptime.
 \end{enumerate}
 
 \subsubsection{Robust or Fault-Tolerance Requirements}
 \begin{enumerate}
-	\item RFTR1. N.A.
+	\item RFT1. In the event of a crash within the system, the system must save the user's data before exiting.
+	\item RFT2. No data must be lost even in case of system failure.
 \end{enumerate}
 
 \subsubsection{Capacity Requirements}
 \begin{enumerate}
-	\item CAPR1. The application shall be at maximum 300MB.
+	\item CAPR1. The application must meet the performance requirements in any station with <= 50 popuation of the default square area.
 \end{enumerate}
 
 \subsubsection{Scalability or Extensibility Requirements}
@@ -264,65 +267,68 @@ The user will be able to view compositions of various sub-views of the system. E
 \subsection{Operational and Environmental Requirements}
 \subsubsection{Expected Physical Environment}
 \begin{enumerate}
-	\item EP1. N.A.
+	\item EP1. The application is expected to be used in a lighting environment consistent with the physical device's display brightness
+	\item EP2. The application is expected to be used in both noisy and quiet physical environments.
 \end{enumerate}
 
 \subsubsection{Requirements for Interfacing with Adjacent Systems}
 \begin{enumerate}
-	\item RIAS1. This application must work on at least the last four generations of smartphones.
+	\item RIAS1. The application is expected to interface with the Twitter authentication and posting API.
 \end{enumerate}
 
 \subsubsection{Productization Requirements}
 \begin{enumerate}
-	\item PRR1. This application shall be distributed as APK file.
+	\item PRR1. This application shall be distributed as an APK file.
 	\item PRR2. The application must be available on Android Play Store.
 \end{enumerate}
 
 \subsubsection{Release Requirements}
 \begin{enumerate}
-	\item RR1. The application must fix any bugs that are brought forward by its customers.
-	\item RR2. There must be a new release every other month, at minimum.
+	\item RR1. At release the application must be free of significant bugs known by the developers.
+	\item RR2. The development team will produce 2nd patch release several weeks after the initial, fixing any discovered bugs.
 \end{enumerate}
 
 \subsection{Maintainability and Support Requirements}
 \subsubsection{Maintenance Requirements}
 \begin{enumerate}
 	\item MSM1. A new Module Interface Specification must be made within a week of the date when the requirements are agreed upon.
-	\item MSM2. Any dependent system must be able to be identified through all of its independent systems in order to solve any bugs.
+	\item MSM2. Future developers should be able to access the values of each separate subsystem indepedently for debugging purposes.
 \end{enumerate}
 
 \subsubsection{Supportability Requirements}
 \begin{enumerate}
 	\item MSS1. An email system where users can interact with the developing team must be set up.
+	\item MSS2. This application is to run under Android.
 \end{enumerate}
 
 \subsubsection{Adaptability Requirements}
 \begin{enumerate}
-	\item ADR1. This application is to run under Android.
-	\item ADR2. The application may eventually be ported to Windows, Mac, Linux, or iOS.
+	\item ADR1. The application must support the addition or removal of subsystems by developers with minimal effort.
 \end{enumerate}
 
 \subsection{Security Requirements}
 \subsubsection{Access Requirements}
 \begin{enumerate}
-	\item SAR1. N.A.
+	\item SAR1. Any user with a Google account has access to the application from the Google Play Store.
+	\item SAR2. Any user with valid social-media credentials has access to the social media portions of the application.
 \end{enumerate}
 
 \subsubsection{Integrity Requirements}
 \begin{enumerate}
-	\item IR1. The application shall ensure that any attempts to breach any personal data be deterred.
-	\item IR2. The application will make sure that any stored data is correct to desired system.
+	\item IR1. The application shall ensure that any attempts to breach the integrity of the user's social media accounts through the application be deterred.
+	\item IR2. The application will maintain the integrity of stored save files.
+	\item IR3. The application will not require excess privileges on the Android device (for example the camera).
 \end{enumerate}
 
 \subsubsection{Privacy Requirements}
 \begin{enumerate}
-	\item PR1. The application shall not collect any personal information.
-	\item PR2. The application will notify the user if any agreement policy changes.
+	\item PR1. The application shall not collect any personal information beyond the social media credentials necessary.
+	\item PR2. The application will notify the user if any privacy policy changes.
 \end{enumerate}
 
 \subsubsection{Audit Requirements}
 \begin{enumerate}
-	\item AR1. N.A.
+	\item AR1. The development team will search for bugs within the application with both automating and manual testing before release.
 \end{enumerate}
 
 \subsubsection{Immunity Requirements}
@@ -334,7 +340,6 @@ The user will be able to view compositions of various sub-views of the system. E
 \subsubsection{Cultural Requirements}
 \begin{enumerate}
 	\item CR1. This application shall not contain any symbols or messages that may offend any ethnic or religious groups.
-	\item CR2. The application must properly distinguish characters from different origins.
 \end{enumerate}
 
 \subsubsection{Political Requirements}

@@ -1,0 +1,28 @@
+* Use Case Descriptions
+	* Create New Station: The user inputs values or accepts defaults for the initial parameters of
+	  the station, which is then generated and opened.
+	* Subsystems Initialize: The subsystems read the contents of the map and
+	  produce their starting state
+	* Save: The system accepts a save location and file name (or defaults)
+	  from the user then produces a serialization of the game-state at the
+	  specified location.
+	* Load: The system reads the contents of the specified save file, then
+	  applies the values within to recreate the game-state.
+	* Change Setting: The system allows the user to input a setting value
+	  to change the overall behavior of the game.
+	* Subsystems React: The 3 subsystems of the game are notified of the
+	  occurring events and react accordingly to update the game-state.
+	* Issue Order: The system displays various components of the station to be
+	  manipulated to the user, who selects one. The availability of the
+		station population is displayed, then if the user confirms they then carry out
+		the given order.
+	* Operate Power/Atmospheric Device: The devices of the station are
+	  displayed for the user to select. Upon selection the appropriate
+		subsystem is displayed. Once the user confirms and enters any appropriate
+		values, the system translates this into an event in the game-world.
+	* Check Views: The system displays a number of views, among which the user
+	  selects which to display.
+	* Snapshot: The system prompts the user for their social-media credentials
+	  or uses the stored ones. The system takes a snapshot of the current
+		view(s) of the system, then posts the snapshot from the user's social media
+		account.
