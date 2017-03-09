@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{extarrows}
 \usepackage{setspace}
+\usepackage{float}
 %------------------------------------------------------------------------------
 
 % Header and Footer
@@ -54,49 +55,53 @@ The first part of this document provides a graphical representation of the funct
 
 \section{Use Case Diagram}
 \label{sec:use_case_diagram}
-% Begin Section
-This section should provide a use case diagram for your application. 
-\begin{enumerate}[a)]
-	\item Each use case appearing in the diagram should be accompanied by a text description. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=80mm]{use_case_diagram.jpg}
+	\caption{The use case diagram}
+\end{figure}
+\begin{enumerate}
+	\item Create New Station: The users opens the application to the main menu. They select the new-station button. They enter parameters for the station such as size, or accept the defaults, then confirm. The game generates a station with the selected parameters, initializes the subsystems, then opens and displays the new station.
+	\item Load: The user opens the application to the main menu. They select the load-previous-save button, then selects the appropriate file on their device. The game deserializes the game-state from the file, initializes the subsystems, then opens it and displays it.
+	\item Save: The user pauses while playing the game, then selects the save-game button. They enter an appropriate filename into the prompt given. The system serializes the game-state, and writes it to the file location given, then returns to the pause screen.
+	\item Change Setting: The user pauses while playing the game, then selects the settings button. The user enters a new value for one of the settings displayed (for example changing the speed at which personnel move and act). The user confirms the new setting, causing the subsystems to implement it, and react appropriately to any changes in the world it may cause.
+	\item Issue Order: The user selects a location within the station. They select that a generator should be built at that location. The personnel subsystem determines which personnel will carry out the order, and assigns them to do so. As time passes, the assigned personnel install the generator.
+	\item Operate Device: The user selects an airlock door in the station to be opened. The power subsystem then checks that the door is powered, and operates it. The atmospheric subsystem circulates gases between the two sides to correct any imbalances. The personnel system reroutes personnel through the door if it creates a shorter path to their destination.
+	\item Check Views: The users pauses while playing the game. They toggle on or off any number of subsystem views, then return to gameplay. The game now displays the selected views.
+	\item Snapshot: The user pauses while playing the game. They select the snapshot button and are prompted to enter their user credentials for Twitter. They enter them and confirm. If the system determines the credentials are valid, it creates a picture out of the current game state and views, then posts the picture with the user's credentials, and returns the user to the game.
 \end{enumerate}
-% End Section
+
 
 \section{Analysis Class Diagram}
 \label{sec:analysis_class_diagram}
-% Begin Section
 This section should provide an analysis class diagram for your application.
-% End Section
 
 
 \section{Architectural Design}
 \label{sec:architectural_design}
-% Begin Section
 This section should provide an overview of the overall architectural design of your application. You overall architecture should show the division of the system into subsystems with high cohesion and low coupling.
 
 \subsection{System Architecture}
 \label{sub:system_architecture}
-% Begin SubSection
+The overall architecture of the system is a Presentation, Abstraction, and Control (PAC) architecture. The three subsystems are all PAC agents, with a single master PAC agent which orchestrates them. The PAC architecture was chosen first because it is an effective architecture for interaction-orientated software. It was chosen over other such architectures because it is an effective model for systems with a set of agents, each with their own model and interface. It is useful for situations where agents may need to be easily removed, replaced, or added later in development, a requirement for this system. Since each subsystem must have a separate, toggle-able view, an architecture that supports multiple Presentations is a good choice. The hierarchical nature of PAC allows for low coupling as subsystems can have an overarching controller which can orchestrate communication, rather than tying each subsystem directly to each other subsystem. Lastly, MVC is a poor choice as it would lead to low cohesion when all the subsystems are grouped into a single controller.
 \begin{enumerate}[a)]
 	\item Identify and explain the overall architecture of your system
 	\item Be sure to clearly state the name of the architecture
 	\item Provide the reasoning and justification of the choice
 	\item Provide a structural architecture diagram showing the relationship among the subsystems (if appropriate)
 \end{enumerate}
-% End SubSection
 
 \subsection{Subsystems}
 \label{sub:subsystems}
-% Begin SubSection
+The following is a description of the subsystems included in the system.
 \begin{enumerate}[a)]
-	\item Provide a brief description of each subsystem. Be sure to document its purpose and relationship to other subsystems.
+	\item Atmospheric: Simulates the flow of various gases through the station, and their effects. Various devices powered by the Power subsystem can affect these flows, and the gases (or lack thereof) can affect the Personnel subsystem by damaging the personnel.
+	\item Power: Simulates the power flow through station wires, the draw of various devices, and the output of station generators. These devices can affect the Atmospheric subsystem by moving, adding, or removing gases in the station. The Power subsystem can affect the Personnel subsystem with these devices, for example a depowered airlock cannot be opened, preventing the passage of personnel.
+	\item Personnel: Simulates the personnel aboard the station, and controls their movements and actions. The station personnel can directly affect the Atmospheric subsystem by slowly changing the gas composition by breathing. They can directly affect the Power subsystem by installing, removing, or using various devices in the station.
 \end{enumerate}
-% End SubSection
 
-% End Section
-	
 \section{Class Responsibility Collaboration (CRC) Cards}
 \label{sec:class_responsibility_collaboration_crc_cards}
-% Begin Section
 This section should contain all of your CRC cards.
 
 \begin{enumerate}[a)]
@@ -116,14 +121,18 @@ This section should contain all of your CRC cards.
 	\end{table}
 	
 \end{enumerate}
-% End Section
 
 \appendix
 \section{Division of Labour}
 \label{sec:division_of_labour}
-% Begin Section
+\begin{enumerate}
+	\item Ian: Designed use case diagram, wrote subsystem descriptions, use case scenarios, and architecture description
+	\item Nishanth: Designed use case diagram
+	\item Arfa: Designed use case diagram
+	\item Steven: Wrote Introduction section
+	\item Areeb: Drew use case diagram from the paper reference, designed use case diagram
+\end{enumerate}
 Include a Division of Labour sheet which indicates the contributions of each team member. This sheet must be signed by all team members.
-% End Section
 
 \newpage
 \section*{IMPORTANT NOTES}
@@ -147,4 +156,3 @@ Include a Division of Labour sheet which indicates the contributions of each tea
 
 
 \end{document}
-%------------------------------------------------------------------------------
