@@ -112,6 +112,118 @@ This section should contain all of your CRC cards.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: MainMenuGUI}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Display buttons for user input & \\
+		\hline
+		Direct view from main menu to a new station & StationGenerator\\
+		\hline
+		Show user saved games upon load game request & MainMenuAbstract \\
+		\hline
+		Open chosen game from saved games list  & StationGenerator \\
+		\hline
+		On user request for settings, open settings menu & SettingsGUI\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: MainMenuController}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Create new station & StationGenerator\\
+		\hline
+		Load values from saved game file into game to allow game to continue from saved state & StationGenerator\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: MainMenuAbstract}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Store saved games and list on request & MainMenuGUI\\
+		\hline
+		Load values from saved game file to continue game & MainMenuController\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: SettingsGUI}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Display settings window & \\
+		\hline
+		Get current settings attributes & SettingsAbstract \\
+		\hline
+		Display text for settings description and current settings attribute & \\
+		\hline
+		Display the buttons for user input & \\
+		\hline
+		Send new settings to abstract & SettingsController \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: SettingsController}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Get updated settings values & SettingsGUI\\
+		\hline
+		Apply the new changes & SettingsAbstract\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: SettingsAbstract}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Store settings values & \\
+		\hline
+		Return requested attributes & SettingsGUI\\
+		\hline
+		Change requested attributes & SettingsController\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name: StationGenerator}} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Load default station values to create station base & \\
+		\hline
+		Load existing station values from file chosen in main menu and recreate station & MainMenuController\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:}PersonnelController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -217,6 +329,7 @@ This section should contain all of your CRC cards.
 		\end{tabular}
 	\end{table}
 \end{enumerate}
+
 
 \appendix
 \section{Division of Labour}
