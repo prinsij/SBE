@@ -13,6 +13,7 @@
 \usepackage{extarrows}
 \usepackage{setspace}
 \usepackage{float}
+\usepackage{verbatim}
 %------------------------------------------------------------------------------
 
 % Header and Footer
@@ -24,7 +25,7 @@
 
 % Title Details
 %------------------------------------------------------------------------------
-\title{Deliverable \#2 Template}
+\title{Deliverable \#2 Tutorial 2 Group 5}
 \author{SE 3A04: Software Design II -- Large System Design}
 \date{}                               
 %------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ The first part of this document provides a graphical representation of the funct
 \label{sec:use_case_diagram}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=80mm]{3A04-Deliverable2-usecase.png}
+	\includegraphics[width=100mm]{3A04-Deliverable2-usecase.png}
 	\caption{The use case diagram}
 \end{figure}
 \begin{enumerate}
@@ -74,7 +75,11 @@ The first part of this document provides a graphical representation of the funct
 
 \section{Analysis Class Diagram}
 \label{sec:analysis_class_diagram}
-This section should provide an analysis class diagram for your application.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=120mm]{ACD_primitives.jpg}
+	\caption{The analysis class diagram}
+\end{figure}
 
 
 \section{Architectural Design}
@@ -83,13 +88,9 @@ This section should provide an overview of the overall architectural design of y
 
 \subsection{System Architecture}
 \label{sub:system_architecture}
-The overall architecture of the system is a \textbf{Presentation, Abstraction, and Control (PAC)} architecture. The three subsystems are all PAC agents, with a single master PAC agent which orchestrates them. The PAC architecture was chosen first because it is an effective architecture for interaction-orientated software. It was chosen over other such architectures because it is an effective model for systems with a set of agents, each with their own model and interface. It is useful for situations where agents may need to be easily removed, replaced, or added later in development, a requirement for this system. Since each subsystem must have a separate, toggle-able view, an architecture that supports multiple Presentations is a good choice. The hierarchical nature of PAC allows for low coupling as subsystems can have an overarching controller which can orchestrate communication, rather than tying each subsystem directly to each other subsystem. Lastly, MVC is a poor choice as it would lead to low cohesion when all the subsystems are grouped into a single controller.
-\begin{enumerate}[a)]
-	\item Identify and explain the overall architecture of your system
-	\item Be sure to clearly state the name of the architecture
-	\item Provide the reasoning and justification of the choice
-	\item Provide a structural architecture diagram showing the relationship among the subsystems (if appropriate)
-\end{enumerate}
+The overall architecture of the system is a \textbf{Presentation, Abstraction, and Control (PAC)} architecture. The three subsystems, as well as a few other major components are all PAC agents, with a single master PAC agent which orchestrates them. The PAC architecture was chosen first because it is an effective architecture for interaction-orientated software. It was chosen over other such architectures because it is an effective model for systems with a set of agents, each with their own model and interface, such as this. It is useful for situations where agents may need to be easily removed, replaced, or added later in development, a requirement for this system. Since each subsystem must have a separate, toggle-able view, an architecture that supports multiple Presentations is a good choice. The hierarchical nature of PAC allows for low coupling as subsystems can have an overarching controller which can orchestrate communication, rather than tying each subsystem directly to each other subsystem. Lastly, MVC is a poor choice as it would lead to low cohesion when all the subsystems are grouped into a single controller.
+
+There is also an Entity Component System (ECS) architecture, which is common in games to simplify inheritance hierarchies and reduce coupling in cases where objects may have relevant properties to multiple subsystems (for eg, a tile may have properties relevant to both atmospheric and power subsystems). The contents of the station, such as tiles, people, and devices, are entities, which contain a set of components, each relevant to a specific subsystem.
 
 \subsection{Subsystems}
 \label{sub:subsystems}
@@ -221,14 +222,14 @@ This section should contain all of your CRC cards.
 \section{Division of Labour}
 \label{sec:division_of_labour}
 \begin{enumerate}
-	\item Ian: Designed use case diagram, wrote subsystem descriptions, use case scenarios, and architecture description
-	\item Nishanth: Designed use case diagram
-	\item Arfa: Designed use case diagram
-	\item Steven: Wrote Introduction section
-	\item Areeb: Drew use case diagram from the paper reference, designed use case diagram
+	\item Ian: Designed use case diagram, wrote subsystem descriptions, use case scenarios, and architecture description, wrote CRC cards, designed analysis class diagram
+	\item Nishanth: Designed use case diagram, designed analysis class diagram
+	\item Arfa: Designed use case diagram, designed analysis class diagram
+	\item Steven: Wrote Introduction section, wrote CRC cards
+	\item Areeb: Drew use case diagram from the paper reference, designed use case diagram, wrote CRC cards
 \end{enumerate}
-Include a Division of Labour sheet which indicates the contributions of each team member. This sheet must be signed by all team members.
 
+\begin{comment}
 \newpage
 \section*{IMPORTANT NOTES}
 \begin{itemize}
@@ -248,6 +249,7 @@ Include a Division of Labour sheet which indicates the contributions of each tea
 	\end{itemize}
 	\item If you do \underline{NOT} have a Division of Labour sheet, your deliverable will \underline{NOT} be marked
 \end{itemize}
+\end{comment}
 
 
 \end{document}
