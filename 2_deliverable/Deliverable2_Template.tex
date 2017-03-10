@@ -111,15 +111,86 @@ This section should contain all of your CRC cards.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}PersonnelController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		\vspace{1in} & \\
+		Accept orders from user & TopController \\
+		\hline
+		Instruct personnel how to perform orders & Task \\
+		\hline
+		Keep personnel away from dangers & Health \\
+		\hline
+		Simulate personnel's condition in the presence of danger & Health \\
 		\hline
 		\end{tabular}
 	\end{table}
-	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}PersonnelView} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Display locations of personnel &  \\
+		\hline
+		Display tasks of personnel &  \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Task} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Store current task of a person & Component \\
+		\hline
+		\end{tabular}	
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Health} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Store current liveliness status of a person & Component \\
+		\hline
+		\end{tabular}	
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}PowerController} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Simulate powerflow through the station & PowerDraw \\
+		\hline
+		Operate powered devices & Powerdraw, Device \\
+		\hline
+		\end{tabular}	
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}PowerView} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Display flow of power through the station &  PowerController\\
+		\hline
+		Display overall power status of station &  PowerController\\
+		\hline
+		\end{tabular}	
+	\end{table}
 \end{enumerate}
 
 \appendix
