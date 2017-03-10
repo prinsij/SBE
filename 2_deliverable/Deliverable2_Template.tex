@@ -84,7 +84,6 @@ The first part of this document provides a graphical representation of the funct
 
 \section{Architectural Design}
 \label{sec:architectural_design}
-This section should provide an overview of the overall architectural design of your application. You overall architecture should show the division of the system into subsystems with high cohesion and low coupling.
 
 \subsection{System Architecture}
 \label{sub:system_architecture}
@@ -108,7 +107,7 @@ The following is a description of the subsystems included in the system.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}MainMenuGUI} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}MainMenuView} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
@@ -120,7 +119,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Open chosen game from saved games list  & StationGenerator \\
 		\hline
-		On user request for settings, open settings menu & SettingsGUI\\
+		On user request for settings, open settings menu & SettingsView\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -146,7 +145,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Store saved games and list on request & MainMenuGUI\\
+		Store saved games and list on request & MainMenuView\\
 		\hline
 		Load values from saved game file to continue game & MainMenuController\\
 		\hline
@@ -156,7 +155,7 @@ The following is a description of the subsystems included in the system.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}SettingsGUI} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}SettingsView} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
@@ -180,7 +179,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Get updated settings values & SettingsGUI\\
+		Get updated settings values & SettingsView\\
 		\hline
 		Apply the new changes & SettingsAbstract\\
 		\hline
@@ -196,7 +195,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Store settings values & \\
 		\hline
-		Return requested attributes & SettingsGUI\\
+		Return requested attributes & SettingsView\\
 		\hline
 		Change requested attributes & SettingsController\\
 		\hline
@@ -316,11 +315,63 @@ The following is a description of the subsystems included in the system.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}PowerDraw} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}AtmosphericController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Store the amount of power an entity adds or draw from the grid & Component\\
+		Simulate the flow of gases throughout the station & Gases\\
+		\hline
+		Accept commands to adjust the atmospheric pressure of the station & AtmosphericView \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}AtmosphericView} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Display the composition of gases in the station & AtmosphericController\\
+		\hline
+		Display atmospheric controls to the user & \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Gases} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Store the quantity and makeup of gas at a location & \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Component} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Provide and store raw data, and how it interacts with the system. & TopController \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Entity} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Provide blueprint to game objects and store their components. & Component \\
 		\hline
 		\end{tabular}
 	\end{table}
