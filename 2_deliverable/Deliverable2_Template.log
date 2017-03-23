@@ -1,10 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.24)  13 FEB 2017 03:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.25)  10 MAR 2017 09:22
 entering extended mode
-**"C:/Users/Nishanth/Documents/Third Year/Semester II/3A04/3A04_Group5/srs/Deli
-verable1_Template.tex"
-
-("C:/Users/Nishanth/Documents/Third Year/Semester II/3A04/3A04_Group5/srs/Deliv
-erable1_Template.tex"
+**./Deliverable2_Template.tex
+(Deliverable2_Template.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -186,21 +183,36 @@ Package: extarrows 2008/05/15 v1.0b Some extensible arrows
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-No file Deliverable1_Template.aux.
-\openout1 = `Deliverable1_Template.aux'.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks29
+\float@box=\box28
+\@float@everytoks=\toks30
+\@floatcapt=\box29
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks31
+\verbatim@line=\toks32
+\verbatim@in@stream=\read1
+)
+(Deliverable2_Template.aux)
+\openout1 = `Deliverable2_Template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -237,17 +249,17 @@ LaTeX Font Info:    ... okay on input line 33.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
+\scratchcounter=\count104
 \scratchdimen=\dimen122
-\scratchbox=\box28
-\nofMPsegments=\count104
-\nofMParguments=\count105
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count106
+\scratchbox=\box30
+\nofMPsegments=\count105
+\nofMParguments=\count106
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count107
 \MPscratchDim=\dimen123
-\MPnumerator=\count107
-\makeMPintoPDFobject=\count108
-\everyMPtoPDFconversion=\toks30
+\MPnumerator=\count108
+\makeMPintoPDFobject=\count109
+\everyMPtoPDFconversion=\toks34
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -290,50 +302,87 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
+<3A04-Deliverable2-usecase.png, id=1, 816.04875pt x 951.555pt>
+File: 3A04-Deliverable2-usecase.png Graphic file (type png)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+<use 3A04-Deliverable2-usecase.png>
+Package pdftex.def Info: 3A04-Deliverable2-usecase.png used on input line 61.
+(pdftex.def)             Requested size: 284.52756pt x 331.77151pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6] [7] [
-8]
-(Deliverable1_Template.aux)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./3A04-Deliverable2-u
+secase.png>]
+<ACD_primitives.jpg, id=15, 733.74126pt x 562.1pt>
+File: ACD_primitives.jpg Graphic file (type jpg)
+ <use ACD_primitives.jpg>
+Package pdftex.def Info: ACD_primitives.jpg used on input line 81.
+(pdftex.def)             Requested size: 455.24408pt x 348.7557pt.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+[3 <./ACD_primitives.jpg>]
+Underfull \hbox (badness 1297) in paragraph at lines 155--155
+[]\OT1/cmr/m/n/10 Show user saved games upon
+ []
 
- ) 
+
+Underfull \hbox (badness 1983) in paragraph at lines 159--159
+[]\OT1/cmr/m/n/10 On user re-quest for set-tings,
+ []
+
+
+Underfull \hbox (badness 2126) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 tion and cur-rent set-tings at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--356
+[]\OT1/cmr/m/n/10 Simulate the flow of gases
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
+[]\OT1/cmr/m/n/10 TwitterInterface, Twit-ter-Cre-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+[]\OT1/cmr/m/n/10 TwitterInterface, Twit-ter-Cre-
+ []
+
+
+Underfull \hbox (badness 2941) in paragraph at lines 474--474
+\OT1/cmr/m/n/10 the game and con-nect-ing to
+ []
+
+[4] [5] [6] [7] [8] [9
+
+] (Deliverable2_Template.aux) ) 
 Here is how much of TeX's memory you used:
- 3225 strings out of 493334
- 44777 string characters out of 3136663
- 112390 words of memory out of 3000000
- 6696 multiletter control sequences out of 15000+200000
- 11849 words of font info for 46 fonts, out of 3000000 for 9000
+ 3261 strings out of 493334
+ 44336 string characters out of 3136678
+ 144496 words of memory out of 3000000
+ 6725 multiletter control sequences out of 15000+200000
+ 11503 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,43p,1033b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Deliverable1_Template.pdf (8 pages, 116382 bytes).
+ 40i,9n,43p,1184b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr17.pfb>
+Output written on Deliverable2_Template.pdf (9 pages, 246942 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

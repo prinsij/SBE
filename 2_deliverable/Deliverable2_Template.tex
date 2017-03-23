@@ -47,7 +47,7 @@ The purpose of this document is twofold. First, it is to provide a higher-level 
 
 \subsection{System Description}
 \label{sub:system_description}
-SpaceBase Ephemeris (SBE) is a real-time system that simulates a human settlement on a foreign planet, named Ephemeris.  The simulation takes place in a distant future where technology has improved to sustain humankind on extraterrestrial planets which are otherwise uninhabitable. As a commander of the base, the user has the responsibility of manipulating the sub-systems to ensure all of the key operations are functional, and possibly ideal. The three subsystems are power control, atmospheric simulation, and the station personnel.
+SpaceBase Ephemeris (SBE) is a real-time system that simulates a human settlement on a foreign planet, named Ephemeris.  The simulation takes place in a distant future where technology has improved to sustain humankind on extraterrestrial planets which are otherwise uninhabitable. As a commander of the base, the user has the responsibility of manipulating the sub-systems to ensure all of the key operations are functional. The three subsystems are power control, atmospheric simulation, and the station personnel.
 
 \subsection{Overview}
 \label{sub:overview}
@@ -61,10 +61,11 @@ The first part of this document provides a graphical representation of the funct
 	\includegraphics[width=100mm]{3A04-Deliverable2-usecase.png}
 	\caption{The use case diagram}
 \end{figure}
+\subsection{Scenarios}
 \begin{enumerate}
 	\item Create New Station: The users opens the application to the main menu. They select the new-station button. They enter parameters for the station such as size, or accept the defaults, then confirm. The game generates a station with the selected parameters, initializes the subsystems, then opens and displays the new station.
 	\item Load: The user opens the application to the main menu. They select the load-previous-save button, then selects the appropriate file on their device. The game deserializes the game-state from the file, initializes the subsystems, then opens it and displays it.
-	\item Save: The user pauses while playing the game, then selects the save-game button. They enter an appropriate filename into the prompt given. The system serializes the game-state, and writes it to the file location given, then returns to the pause screen.
+	\item Save: The user pauses while playing the game, then selects the save-game button from the main menu. They enter an appropriate filename into the prompt given. The system serializes the game-state, and writes it to the file location given, then returns to the main menu.
 	\item Change Setting: The user pauses while playing the game, then selects the settings button. The user enters a new value for one of the settings displayed (for example changing the speed at which personnel move and act). The user confirms the new setting, causing the subsystems to implement it, and react appropriately to any changes in the world it may cause.
 	\item Issue Order: The user selects a location within the station. They select that a generator should be built at that location. The personnel subsystem determines which personnel will carry out the order, and assigns them to do so. As time passes, the assigned personnel install the generator.
 	\item Operate Device: The user selects an airlock door in the station to be opened. The power subsystem then checks that the door is powered, and operates it. The atmospheric subsystem circulates gases between the two sides to correct any imbalances. The personnel system reroutes personnel through the door if it creates a shorter path to their destination.
@@ -77,7 +78,7 @@ The first part of this document provides a graphical representation of the funct
 \label{sec:analysis_class_diagram}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=120mm]{ACD_primitives.jpg}
+	\includegraphics[width=160mm]{ACD_primitives.jpg}
 	\caption{The analysis class diagram}
 \end{figure}
 
@@ -89,7 +90,7 @@ The first part of this document provides a graphical representation of the funct
 \label{sub:system_architecture}
 The overall architecture of the system is a \textbf{Presentation, Abstraction, and Control (PAC)} architecture. The three subsystems, as well as a few other major components are all PAC agents, with a single master PAC agent which orchestrates them. The PAC architecture was chosen first because it is an effective architecture for interaction-orientated software. It was chosen over other such architectures because it is an effective model for systems with a set of agents, each with their own model and interface, such as this. It is useful for situations where agents may need to be easily removed, replaced, or added later in development, a requirement for this system. Since each subsystem must have a separate, toggle-able view, an architecture that supports multiple Presentations is a good choice. The hierarchical nature of PAC allows for low coupling as subsystems can have an overarching controller which can orchestrate communication, rather than tying each subsystem directly to each other subsystem. Lastly, MVC is a poor choice as it would lead to low cohesion when all the subsystems are grouped into a single controller.
 
-There is also an Entity Component System (ECS) architecture, which is common in games to simplify inheritance hierarchies and reduce coupling in cases where objects may have relevant properties to multiple subsystems (for eg, a tile may have properties relevant to both atmospheric and power subsystems). The contents of the station, such as tiles, people, and devices, are entities, which contain a set of components, each relevant to a specific subsystem.
+There is also an Entity Component System (ECS) architecture, which is common in games to simplify inheritance hierarchies and reduce coupling in cases where objects may have relevant properties to multiple subsystems (for eg, a tile may have properties relevant to both atmospheric and power subsystems). The contents of the station, such as tiles, people, and devices, are entities, each of which contain a set of components, each relevant to a specific subsystem.
 
 \subsection{Subsystems}
 \label{sub:subsystems}
@@ -103,6 +104,44 @@ The following is a description of the subsystems included in the system.
 \section{Class Responsibility Collaboration (CRC) Cards}
 \label{sec:class_responsibility_collaboration_crc_cards}
 
+\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}TopController} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Accept raw user input and translate into commands for lower-level controllers & UserInput\\
+		\hline
+		Display the views of lower level controllers & TopDisplay\\
+		\hline
+		Continuously update the status of station entities & Entity \\
+		\hline
+		\end{tabular}
+	\end{table}\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}UserInput} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Accept raw user input from the device & \\
+		\hline
+		\end{tabular}
+	\end{table}\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}TopDisplay} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Display content directly onto the device & \\
+		\hline
+		\end{tabular}
+	\end{table}
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
@@ -111,15 +150,9 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Display buttons for user input & \\
+		Display buttons to load or save game, open settings menu, and create a new station & \\
 		\hline
-		Direct view from main menu to a new station & StationGenerator\\
-		\hline
-		Show user saved games upon load game request & MainMenuAbstract \\
-		\hline
-		Open chosen game from saved games list  & StationGenerator \\
-		\hline
-		On user request for settings, open settings menu & SettingsView\\
+		Show user saved games upon load game request & MainMenuAbstraction \\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -131,9 +164,13 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Create new station & StationGenerator\\
+		Create new station with paramters from user & StationGenerator, MainMenuView\\
 		\hline
-		Load values from saved game file into game to allow game to continue from saved state & StationGenerator\\
+		Load values from saved game file into game to allow game to continue from saved state & FileSystemInterface \\
+		\hline
+		Serialize the game-state into a file of the user's choice & FileSystemInterface\\
+		\hline
+		On user request for settings, open settings menu & SettingsView\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -145,9 +182,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Store saved games and list on request & MainMenuView\\
-		\hline
-		Load values from saved game file to continue game & MainMenuController\\
+		Store saved games and list on request & \\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -161,11 +196,11 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Display settings window & \\
 		\hline
-		Get current settings attributes & SettingsAbstract \\
+		Get current settings values & Settings \\
 		\hline
 		Display text for settings description and current settings attribute & \\
 		\hline
-		Display the buttons for user input & \\
+		Display options for entering new settings & \\
 		\hline
 		Send new settings to abstract & SettingsController \\
 		\hline
@@ -181,7 +216,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Get updated settings values & SettingsView\\
 		\hline
-		Apply the new changes & SettingsAbstract\\
+		Apply the new settings changes & Settings\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -189,15 +224,11 @@ The following is a description of the subsystems included in the system.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}SettingsAbstraction} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}Settings} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
 		Store settings values & \\
-		\hline
-		Return requested attributes & SettingsView\\
-		\hline
-		Change requested attributes & SettingsController\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -210,8 +241,6 @@ The following is a description of the subsystems included in the system.
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
 		Load default station values to create station base & \\
-		\hline
-		Load existing station values from file chosen in main menu and recreate station & MainMenuController\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -227,7 +256,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Instruct personnel how to perform orders & Task \\
 		\hline
-		Keep personnel away from dangers & Health \\
+		Keep personnel away from danger when possible & Health \\
 		\hline
 		Simulate personnel's condition in the presence of danger & Health \\
 		\hline
@@ -243,7 +272,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		Display locations of personnel &  \\
 		\hline
-		Display tasks of personnel &  \\
+		Display tasks of personnel & \\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -267,7 +296,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Store current liveliness status of a person & Component \\
+		Store current physiological status of a person & Component \\
 		\hline
 		\end{tabular}	
 	\end{table}
@@ -293,9 +322,9 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Display flow of power through the station &  PowerController\\
+		Display flow of power through the station & \\
 		\hline
-		Display overall power status of station &  PowerController\\
+		Display overall power status of station & \\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -307,7 +336,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Store the amount of power an entity adds or draw from the grid & Component\\
+		Store the amount of power an entity adds to or draws from the grid & Component\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -333,7 +362,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Display the composition of gases in the station & AtmosphericController\\
+		Display the composition of gases in the station & \\
 		\hline
 		Display atmospheric controls to the user & \\
 		\hline
@@ -347,7 +376,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Store the quantity and makeup of gas at a location & \\
+		Store the quantity and makeup of gas at a location & Component\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -359,7 +388,7 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline 
-		Provide and store raw data, and how it interacts with the system. & TopController \\
+		Store data about associated entity & Entity \\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -375,8 +404,86 @@ The following is a description of the subsystems included in the system.
 		\hline
 		\end{tabular}
 	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}FileSystemInterface} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Connect the application to the file system of the device &  \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}SnapShotController} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Accept commands from the user to snapshot the game & SnapShotView\\
+		\hline
+		Produce a picture from the current game-state & GamePicture\\
+		\hline
+		Verify the user's Twitter credentials & TwitterInterface, TwitterCredentials \\
+		\hline
+		Post to the user's Twitter feed & TwitterInterface, TwitterCredentials \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}TwitterInterface} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Connect the application to Twitter's API & \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}TwitterCredentials} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Store the user's Twitter credentials & \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}SnapShotView} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Display menu for snapshotting the game and connecting to Twitter & \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:}GamePicture} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline 
+		Store picture(s) of the game & \\
+		\hline
+		\end{tabular}
+	\end{table}
 
-
+\clearpage
 \appendix
 \section{Division of Labour}
 \label{sec:division_of_labour}
@@ -384,8 +491,8 @@ The following is a description of the subsystems included in the system.
 	\item Ian: Designed use case diagram, wrote subsystem descriptions, use case scenarios, and architecture description, wrote CRC cards, designed analysis class diagram
 	\item Nishanth: Designed use case diagram, designed analysis class diagram
 	\item Arfa: Designed use case diagram, designed analysis class diagram
-	\item Steven: Wrote Introduction section, wrote CRC cards
-	\item Areeb: Drew use case diagram from the paper reference, designed use case diagram, wrote CRC cards
+	\item Steven: Wrote Introduction section, wrote CRC cards, designed analysis class diagram
+	\item Areeb: Designed use case diagram, drew use case diagram from the paper reference, wrote CRC cards
 \end{enumerate}
 
 \begin{comment}
