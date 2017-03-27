@@ -39,42 +39,24 @@
 \label{sec:introduction}
 % Begin Section
 
-This section should provide an brief overview of the entire document.
+The following document is a description of the detailed design of the software system. 
 
 \subsection{Purpose}
 \label{sub:purpose}
-% Begin SubSection
-\begin{enumerate}[a)]
-	\item Delineate the purpose of the document
-	\item Specify the intended audience for the document
-\end{enumerate}
-% End SubSection
+The purpose of this document is to provide a detailed design for the development of the software, in the form of a series of diagrams. The diagrams lay out the classes in the software, their responsibilities, methods, and attributes, as well as the control flow through the system. The primary intended audience of this document is the developers of the software by generalizing the internal details of the software, however any stakeholders may find the document of interest as the functional requirements are conveyed here. Future developers and/or maintainers are also among the intended audience.
 
 \subsection{System Description}
 \label{sub:system_description}
-% Begin SubSection
-\begin{enumerate}[a)]
-	\item Give a brief description of the system. This could be a paragraph or two to give some context to this document.
-\end{enumerate}
-% End SubSection
+SpaceBase Ephemeris (SBE) is a real-time system that simulates a human settlement on a foreign planet, named Ephemeris.  The simulation takes place in a distant future where technology has improved to sustain humankind on extraterrestrial planets which are otherwise uninhabitable. As a commander of the base, the user has the responsibility of manipulating the sub-systems to ensure all of the key operations are functional. The three subsystems are power control, atmospheric simulation, and the station personnel.
 
 \subsection{Overview}
 \label{sub:overview}
-% Begin SubSection
-\begin{enumerate}[a)]
-	\item Describe what the rest of the document contains 
-	\item Explain how the document is organised
-\end{enumerate}
-
-% End SubSection
-
-% End Section
+This document contains 4 major sections. The first is this introduction. The second is a series of state charts that display the control flow in the various controllers in the software. The second is a series of sequence diagrams which showcase the timeline of activity in the system's classes in each of the use case scenarios. The last is a detailed class diagram that shows all the classes in the system design and their responsibilities. Finally there is an appendix which provides a breakdown of the work performed on the document by each of the members of the project team.
 
 \section{State Charts for Controller Classes}
 \label{sec:state_charts_for_controller_classes}
-% Begin Section
-This section should provide a state chart for each controller class for your application.
-% End Section
+
+The following is a state chart for each controller class in the system.
 
 \begin{figure}[H]
 	\centering
@@ -88,6 +70,21 @@ This section should provide a state chart for each controller class for your app
 \end{figure}
 \begin{figure}[H]
 	\centering
+	\includegraphics[width=150mm]{AtmosphericController.png}
+	\caption{AtmosphericController}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=50mm]{PowerController.png}
+	\caption{PowerController}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=75mm]{PersonnelController.png}
+	\caption{PersonnelController}
+\end{figure}
+\begin{figure}[H]
+	\centering
 	\includegraphics[width=150mm]{TopController.png}
 	\caption{TopController}
 \end{figure}
@@ -95,19 +92,26 @@ This section should provide a state chart for each controller class for your app
 
 \section{Sequence Diagrams}
 \label{sec:sequence_diagrams}
-% Begin Section
-This section should provide a sequence diagram for each use case of your application.
-% End Section
+The following is a sequence diagram for each use case scenario of the system.
 
 \section{Detailed Class Diagram}
 \label{sec:detailed_class_diagram}
-% Begin Section
-This section should provide a detailed class diagram for your application.
-% End Section
+The following is a detailed class diagram of the system.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=220mm, angle=90]{ClassDiagramA.png}
+	\caption{Class Diagram part A}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=220mm, angle=90]{ClassDiagramB.png}
+	\caption{Class Diagram part B}
+\end{figure}
 
 \appendix
 \section{Division of Labour}
 \label{sec:division_of_labour}
+The following is a description of the work on this document performed by each team member.
 \begin{enumerate}
 	\item Ian Prins: Class diagram, introduction
 	\item Nishanth Balamohan: State charts
@@ -115,9 +119,6 @@ This section should provide a detailed class diagram for your application.
 	\item Steven Kimarro: State charts
 	\item Areeb Malik: Class diagram
 \end{enumerate}
-% Begin Section
-Include a Division of Labour sheet which indicates the contributions of each team member. This sheet must be signed by all team members.
-% End Section
 
 \newpage
 \section*{IMPORTANT NOTES}
