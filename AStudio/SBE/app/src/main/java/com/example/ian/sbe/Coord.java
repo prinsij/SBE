@@ -6,6 +6,11 @@ package com.example.ian.sbe;
 
 public class Coord {
     private final int x, y;
+    public static final Coord[] ORTHO = {new Coord(0,1),new Coord(1,0),new Coord(1,1),
+                                         new Coord(0,-1),new Coord(-1,0),new Coord(-1,-1),
+                                         new Coord(1,-1),new Coord(-1,1)};
+    public static final Coord[] CARDINAL = {new Coord(1,0),new Coord(0,1),
+                                            new Coord(-1,0),new Coord(0,-1)};
 
     Coord(int x, int y) {
         this.x = x;

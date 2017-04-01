@@ -9,8 +9,17 @@ public class Health extends Component {
         return hp;
     }
 
-    private final int hp;
+    private int hp = 0;
+
     public Health(int hp) {
         this.hp = hp;
+    }
+
+    public void subtract(int amount) {
+        if (amount <= this.hp) {
+            this.hp -= amount;
+        } else {
+            this.hp = 0;
+        }
     }
 }
