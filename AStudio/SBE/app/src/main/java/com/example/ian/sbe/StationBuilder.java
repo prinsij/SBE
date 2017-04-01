@@ -20,7 +20,7 @@ public class StationBuilder {
     public void build() {
         for (int x=0; x < X; x++) {
             for (int y=0; y < Y; y++) {
-                new Entity(new Coord(0, 0))
+                new Entity(new Coord(x, y))
                         .add(new GasStorage())
                         .add(new Symbol('#'));
             }

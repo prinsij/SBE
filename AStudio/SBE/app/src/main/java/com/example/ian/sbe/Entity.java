@@ -2,13 +2,13 @@ package com.example.ian.sbe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Entity {
+public class Entity implements Comparable<Entity> {
     private int id = 0;
     private Coord coord;
     private static Map<Coord, Set<Entity>> entities = new HashMap<>();
@@ -27,7 +27,13 @@ public class Entity {
         this.id = currId;
         this.coord = coord;
         currId += 1;
-        entities.get(coord).add(this);
+        if (entities.containsKey(coord)) {
+            entities.get(coord).add(this);
+        } else {
+            Set<Entity> set = new HashSet<>();
+            set.add(this);
+            entities.put(coord, set);
+        }
     }
 
     public Coord getCoord() {
@@ -35,7 +41,11 @@ public class Entity {
     }
 
     public static Iterable<Entity> getAt(Coord coord) {
-        return entities.get(coord);
+        Set<Entity> result = entities.get(coord);
+        if (result != null) {
+            return result;
+        }
+        return new HashSet<Entity>();
     }
 
     public Entity add(Component component) {
@@ -72,5 +82,20 @@ public class Entity {
             }
         }
         return result;
+    }
+
+    @Override
+    public int compareTo(Entity other) {
+        if (this.id < other.id) {
+            return -1;
+        } else if (this.id > other.id) {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

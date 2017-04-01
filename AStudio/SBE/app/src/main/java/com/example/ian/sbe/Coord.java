@@ -28,4 +28,27 @@ public class Coord {
     Coord add(Coord other) {
         return new Coord(this.x + other.x, this.y + other.y);
     }
+
+    public String toString() {
+        return "(" + Integer.toString(this.x) + "," + Integer.toString(this.y) + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Coord coord = (Coord) o;
+
+        if (x != coord.x) return false;
+        return y == coord.y;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = x;
+        result = 31 * result + y;
+        return result;
+    }
 }

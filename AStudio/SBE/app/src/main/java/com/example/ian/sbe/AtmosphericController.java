@@ -1,9 +1,10 @@
 package com.example.ian.sbe;
 
+import android.util.Log;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Ian on 2017-04-01.
@@ -12,6 +13,7 @@ import java.util.Random;
 public class AtmosphericController extends System {
     public void mainLoop() {
         while (Utils.getRand().nextDouble() >= Settings.getPercolateHaltChance()) {
+            Log.d("SBE", "atmo loop");
             for (Entity ent : Entity.allEntities()) {
                 try {
                     GasStorage gas = ent.getComponent(GasStorage.class);
@@ -26,20 +28,17 @@ public class AtmosphericController extends System {
                                     gas.setAmount(gastype, gas.getAmount(gastype) + swap);
                                     gas2.setAmount(gastype, gas2.getAmount(gastype) - swap);
                                 }
-                            } catch (ComponentNotFoundException e) {
-                            }
+                            } catch (ComponentNotFoundException e) {}
                         }
                     }
-                } catch (ComponentNotFoundException e) {
-                }
+                } catch (ComponentNotFoundException e) {}
                 try {
                     GasTransformer transformer = ent.getComponent(GasTransformer.class);
                     GasStorage storage = null;
                     for (Entity ent2 : Entity.getAt(ent.getCoord())) {
                         try {
                             storage = ent2.getComponent(GasStorage.class);
-                        } catch (ComponentNotFoundException e) {
-                        }
+                        } catch (ComponentNotFoundException e) {}
                     }
                     if (storage != null) {
                         boolean success = transformer.transform(storage);
@@ -48,9 +47,9 @@ public class AtmosphericController extends System {
                             hp.subtract(transformer.getFailurePenalty());
                         }
                     }
-                } catch (ComponentNotFoundException e) {
-                }
+                } catch (ComponentNotFoundException e) {}
             }
         }
+        Log.d("SBE", "atmo complete");
     }
 }

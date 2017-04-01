@@ -16,7 +16,11 @@ public class GasStorage extends Component {
     private Map<GAS, Integer> storage = new TreeMap<>();
 
     public int getAmount(GAS gas) {
-        return storage.get(gas);
+        try {
+            return storage.get(gas);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     public void setAmount(GAS gas, int amount) {
