@@ -11,8 +11,7 @@ import java.util.Random;
 
 public class AtmosphericController extends System {
     public void mainLoop() {
-        Random r = new Random();
-        while (r.nextDouble() >= Settings.getPercolateHaltChance()) {
+        while (Utils.getRand().nextDouble() >= Settings.getPercolateHaltChance()) {
             for (Entity ent : Entity.allEntities()) {
                 try {
                     GasStorage gas = ent.getComponent(GasStorage.class);

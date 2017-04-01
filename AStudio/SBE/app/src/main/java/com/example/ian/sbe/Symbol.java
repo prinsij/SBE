@@ -9,7 +9,11 @@ public class Symbol extends Component {
         return symbol;
     }
 
-    private final char symbol = ' ';
+    public Symbol(char sym) {
+        this.symbol = sym;
+    }
+
+    private final char symbol;
 
 
 
