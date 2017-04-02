@@ -13,9 +13,7 @@ public class Health extends Component {
 
     private int hp = 100;
 
-    public Health(int hp) {
-        this.hp = hp;
-    }
+    public Health() {}
 
     public void subtract(int amount) {
         if (amount <= this.hp) {

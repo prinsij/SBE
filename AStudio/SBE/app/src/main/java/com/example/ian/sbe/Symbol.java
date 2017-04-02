@@ -5,6 +5,7 @@ package com.example.ian.sbe;
  */
 
 public class Symbol extends Component {
+    private int layer = 0;
     public char getSymbol() {
         return symbol;
     }
@@ -12,9 +13,15 @@ public class Symbol extends Component {
     public Symbol(char sym) {
         this.symbol = sym;
     }
+    public Symbol(char sym, int layer) {
+        this.symbol = sym;
+        this.layer = layer;
+    }
 
     private final char symbol;
 
 
-
+    public int getLayer() {
+        return layer;
+    }
 }

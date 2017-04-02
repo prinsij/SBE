@@ -6,7 +6,7 @@ package com.example.ian.sbe;
 
 public class StationBuilder {
     private final int X, Y;
-    private final int startingCrew = 5;
+    private final int startingCrew = 3;
     private final int roomX = 3, roomY = 3, roomWidth = 3, roomHeight = 3, separation = 1;
 
 
@@ -45,6 +45,13 @@ public class StationBuilder {
                 .add(new GasStorage(false))
                 .add(new Symbol('%'))
                 .add(new Terrain(true));
+    }
+
+    private void placePerson(Coord coord) {
+        new Entity(coord)
+                .add(new Health())
+                .add(new Symbol('@', 1))
+                .add(new WayPoint(coord.add(new Coord(0, 2))));
     }
 
     public void build() {
@@ -91,18 +98,9 @@ public class StationBuilder {
                 }
             }
         }
-        /*
-        for (int x=0; x < X; x++) {
-            for (int y=0; y < Y; y++) {
-                new Entity(new Coord(x, y))
-                        .add(new GasStorage())
-                        .add(new Symbol('.'));
-            }
-        }*/
+        // place crew
         for (int q=0; q < startingCrew; q++) {
-            new Entity(new Coord(0+q, 0))
-                    .add(new Health(10))
-                    .add(new Symbol('@'));
+            placePerson(new Coord(q+1, 1));
         }
     }
 

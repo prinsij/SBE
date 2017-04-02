@@ -59,6 +59,16 @@ public class Entity implements Comparable<Entity> {
         throw new ComponentNotFoundException();
     }
 
+    public static <T extends Component> Iterable<T> getAllComponentsAt(Coord coord, Class<T> component) {
+        ArrayList<T> result = new ArrayList<T>();
+        for (Entity entity : getAt(coord)) {
+            try {
+                result.add(entity.getComponent(component));
+            } catch (ComponentNotFoundException e) {}
+        }
+        return result;
+    }
+
     public Entity add(Component component) {
         this.components.add(component);
         return this;
@@ -121,5 +131,9 @@ public class Entity implements Comparable<Entity> {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    public String toString() {
+        return Integer.toString(this.id);
     }
 }

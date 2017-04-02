@@ -14,17 +14,24 @@ public class MainActivity extends AppCompatActivity {
             StationBuilder builder = new StationBuilder();
             builder.build();
             AtmosphericController atmo = new AtmosphericController();
+            PersonnelController persons = new PersonnelController();
             Log.d("SBE", "app initialized");
             while (true) {
                 atmo.mainLoop();
+                persons.mainLoop();
                 if (Utils.getRand().nextDouble() < 1.0) {
                     for (int y = 0; y < builder.getY(); y++) {
                         StringBuilder str = new StringBuilder();
                         for (int x = 0; x < builder.getX(); x++) {
-                            try {
-                                str.append(' ').append(Entity.getComponentAt(new Coord(x,y), Symbol.class).getSymbol());
-                            } catch (ComponentNotFoundException e) {
+                            int maxLayer = -1;
+                            char maxSymbol = '?';
+                            for (Symbol symbol : Entity.getAllComponentsAt(new Coord(x, y), Symbol.class)) {
+                                if (symbol.getLayer() > maxLayer) {
+                                    maxLayer = symbol.getLayer();
+                                    maxSymbol = symbol.getSymbol();
+                                }
                             }
+                            str.append(' ').append(maxSymbol);
                         }
                         Log.d("SBE", str.toString());
                     }
