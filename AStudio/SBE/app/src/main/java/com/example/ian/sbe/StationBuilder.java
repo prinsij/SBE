@@ -6,6 +6,7 @@ package com.example.ian.sbe;
 
 public class StationBuilder {
     private final int X, Y;
+    private final int startingCrew = 5;
 
     public StationBuilder(int x, int y) {
         this.X = x;
@@ -22,8 +23,13 @@ public class StationBuilder {
             for (int y=0; y < Y; y++) {
                 new Entity(new Coord(x, y))
                         .add(new GasStorage())
-                        .add(new Symbol('#'));
+                        .add(new Symbol('.'));
             }
+        }
+        for (int q=0; q < startingCrew; q++) {
+            new Entity(new Coord(0+q, 0))
+                    .add(new Health(10))
+                    .add(new Symbol('@'));
         }
     }
 
