@@ -17,18 +17,14 @@ public class MainActivity extends AppCompatActivity {
             Log.d("SBE", "app initialized");
             while (true) {
                 atmo.mainLoop();
-                if (Utils.getRand().nextDouble() < .25) {
+                if (Utils.getRand().nextDouble() < 1.0) {
                     for (int y = 0; y < builder.getY(); y++) {
                         StringBuilder str = new StringBuilder();
                         for (int x = 0; x < builder.getX(); x++) {
-                            char symbol = ' ';
-                            for (Entity ent : Entity.getAt(new Coord(x, y))) {
-                                try {
-                                    symbol = ent.getComponent(Symbol.class).getSymbol();
-                                } catch (ComponentNotFoundException e) {
-                                }
+                            try {
+                                str.append(' ').append(Entity.getComponentAt(new Coord(x,y), Symbol.class).getSymbol());
+                            } catch (ComponentNotFoundException e) {
                             }
-                            str.append(' ').append(symbol);
                         }
                         Log.d("SBE", str.toString());
                     }

@@ -17,12 +17,14 @@ public class AtmosphericController extends System {
             for (Entity ent : Entity.allEntities()) {
                 try {
                     GasStorage gas = ent.getComponent(GasStorage.class);
+                    if (!gas.isActive()) continue;
                     List<Coord> cardinal = Arrays.asList(Coord.CARDINAL);
                     Collections.shuffle(cardinal);
                     for (Coord coord : cardinal) {
                         for (Entity ent2 : Entity.getAt(coord)) {
                             try {
                                 GasStorage gas2 = ent2.getComponent(GasStorage.class);
+                                if (!gas2.isActive()) continue;
                                 for (GasStorage.GAS gastype : GasStorage.GAS.values()) {
                                     int swap = (gas2.getAmount(gastype) - gas.getAmount(gastype)) / 2;
                                     gas.setAmount(gastype, gas.getAmount(gastype) + swap);

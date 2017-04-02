@@ -48,6 +48,17 @@ public class Entity implements Comparable<Entity> {
         return new HashSet<Entity>();
     }
 
+    public static <T extends Component> T getComponentAt(Coord coord, Class<T> component) throws ComponentNotFoundException {
+        for (Entity entity : getAt(coord)) {
+            for (Component c : entity.components) {
+                try {
+                    return entity.getComponent(component);
+                } catch (Exception e) {}
+            }
+        }
+        throw new ComponentNotFoundException();
+    }
+
     public Entity add(Component component) {
         this.components.add(component);
         return this;
@@ -77,6 +88,19 @@ public class Entity implements Comparable<Entity> {
                 try {
                     entity.getComponent(component);
                     result.add(entity);
+                } catch (ComponentNotFoundException e) {
+                }
+            }
+        }
+        return result;
+    }
+
+    public static <T extends Component> Iterable<T> getAllComponents(Class<T> component) {
+        ArrayList<T> result = new ArrayList<>();
+        for (Set<Entity> set : entities.values()) {
+            for (Entity entity : set) {
+                try {
+                    result.add(entity.getComponent(component));
                 } catch (ComponentNotFoundException e) {
                 }
             }

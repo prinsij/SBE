@@ -5,7 +5,7 @@ package com.example.ian.sbe;
  */
 
 public class Settings {
-    private static double percolateHaltChance = .2;
+    private static double percolateHaltChance = 1.0;
 
     public static double getPercolateHaltChance() {
         return percolateHaltChance;
