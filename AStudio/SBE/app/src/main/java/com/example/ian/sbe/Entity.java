@@ -48,6 +48,10 @@ public class Entity implements Comparable<Entity> {
         return new HashSet<Entity>();
     }
 
+    public void removeComponent(Component component) {
+        this.components.remove(component);
+    }
+
     public static <T extends Component> T getComponentAt(Coord coord, Class<T> component) throws ComponentNotFoundException {
         for (Entity entity : getAt(coord)) {
             for (Component c : entity.components) {
@@ -75,7 +79,19 @@ public class Entity implements Comparable<Entity> {
     }
 
     public void setCoord(Coord coord) {
+        Set<Entity> atCurrentTile = entities.get(this.getCoord());
+        atCurrentTile.remove(this);
+        if (atCurrentTile.isEmpty()) {
+            entities.remove(this.getCoord());
+        }
         this.coord = coord;
+        if (entities.containsKey(coord)) {
+            entities.get(coord).add(this);
+        } else {
+            Set<Entity> newSet = new TreeSet<Entity>();
+            newSet.add(this);
+            entities.put(coord, newSet);
+        }
     }
 
     public int getId() {

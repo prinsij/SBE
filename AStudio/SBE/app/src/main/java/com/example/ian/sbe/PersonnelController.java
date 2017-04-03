@@ -30,16 +30,23 @@ public class PersonnelController extends System {
                 Task task = entity.getComponent(Task.class);
                 if (task instanceof WayPoint) {
                     try {
-                        Coord nextPos = pathBetween(entity.getCoord(), ((WayPoint) task).getWhere()).get(0);
-                        Log.d("SBE", "wp from " + entity.getCoord().toString() + " to " + nextPos.toString());
+                        Coord where = ((WayPoint) task).getWhere();
+                        List<Coord> path = pathBetween(entity.getCoord(), where);
+                        Coord nextPos = path.get(0);
+                        Log.d("SBE", "wp from " + entity.getCoord().toString() + " to " + where.toString());
                         entity.setCoord(nextPos);
+                        Log.d("SBE", "nextpos: " + nextPos.toString());
+                        for (Coord item : path) {
+                            Log.d("SBE", "path: " + item.toString());
+                        }
+                        if (nextPos.equals(where)) {
+                            entity.removeComponent(task);
+                        }
                     } catch (Exception e) {
                         Log.d("SBE", e.getMessage().toString());
                     }
                 }
-            } catch (ComponentNotFoundException e) {
-                e.printStackTrace();
-            }
+            } catch (ComponentNotFoundException e) {}
         }
     }
 
@@ -51,7 +58,7 @@ public class PersonnelController extends System {
 
         while (!queue.isEmpty()) {
             Coord current = queue.remove();
-            if (current == to) {
+            if (current.equals(to)) {
                 return map.get(current);
             }
             for (Coord card : Coord.CARDINAL) {
@@ -67,8 +74,10 @@ public class PersonnelController extends System {
                 }
                 List<Coord> oldList = map.get(current);
                 List<Coord> nextList = new ArrayList<Coord>(oldList.size());
-                Collections.copy(oldList, nextList);
-                nextList.add(current);
+                for (Coord coord : oldList) {
+                    nextList.add(coord);
+                }
+                nextList.add(next);
                 map.put(next, nextList);
                 queue.add(next);
             }
