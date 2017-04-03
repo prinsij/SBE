@@ -52,6 +52,10 @@ public class Entity implements Comparable<Entity> {
         this.components.remove(component);
     }
 
+    public static void deleteEntity(Entity entity) {
+        entities.get(entity.getCoord()).remove(entity);
+    }
+
     public static <T extends Component> T getComponentAt(Coord coord, Class<T> component) throws ComponentNotFoundException {
         for (Entity entity : getAt(coord)) {
             for (Component c : entity.components) {

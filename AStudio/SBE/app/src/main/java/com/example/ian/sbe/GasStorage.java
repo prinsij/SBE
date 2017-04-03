@@ -32,6 +32,10 @@ public class GasStorage extends Component {
         return total;
     }
 
+    public void clear() {
+        this.storage.clear();
+    }
+
     public GasStorage() {}
 
     public GasStorage(GAS defaultFill) {

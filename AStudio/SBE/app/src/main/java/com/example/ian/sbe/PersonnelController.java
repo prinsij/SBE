@@ -3,7 +3,6 @@ package com.example.ian.sbe;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,19 +15,25 @@ import java.util.Queue;
 
 public class PersonnelController extends System {
 
-    @Override
     public void mainLoop() {
+        // handle damage
         for (Entity entity : Entity.getAllWith(Health.class)) {
             try {
                 Health health = entity.getComponent(Health.class);
                 health.subtract(health.checkForDamage(Entity.getComponentAt(entity.getCoord(), GasStorage.class)));
+                // death
+                if (health.getHp() <= 0) {
+                    Entity.deleteEntity(entity);
+                }
             } catch (ComponentNotFoundException e) {}
         }
+        // handle tasks
         for (Entity entity : Entity.getAllWith(Task.class)) {
             Log.d("SBE", "Task user: " + entity.toString());
             try {
                 Task task = entity.getComponent(Task.class);
                 if (task instanceof WayPoint) {
+                    // move along path if possible
                     try {
                         Coord where = ((WayPoint) task).getWhere();
                         List<Coord> path = pathBetween(entity.getCoord(), where);
@@ -50,6 +55,7 @@ public class PersonnelController extends System {
         }
     }
 
+    // simple BFS path-finding
     private List<Coord> pathBetween(Coord from, Coord to) throws Exception {
         Queue<Coord> queue = new LinkedList<Coord>();
         Map<Coord, List<Coord>> map = new HashMap<>();
@@ -73,7 +79,7 @@ public class PersonnelController extends System {
                     continue;
                 }
                 List<Coord> oldList = map.get(current);
-                List<Coord> nextList = new ArrayList<Coord>(oldList.size());
+                List<Coord> nextList = new ArrayList<>(oldList.size());
                 for (Coord coord : oldList) {
                     nextList.add(coord);
                 }

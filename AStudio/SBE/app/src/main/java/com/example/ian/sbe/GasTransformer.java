@@ -5,12 +5,5 @@ package com.example.ian.sbe;
  */
 
 public abstract class GasTransformer extends Component {
-    private int failurePenalty = 0;
-    public boolean transform(GasStorage gasStorage) {
-        return true;
-    }
-
-    public int getFailurePenalty() {
-        return failurePenalty;
-    }
+    public abstract void transform(GasStorage gasStorage);
 }

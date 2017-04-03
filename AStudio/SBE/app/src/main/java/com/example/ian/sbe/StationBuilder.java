@@ -30,7 +30,8 @@ public class StationBuilder {
         new Entity(coord)
                 .add(new GasStorage())
                 .add(new Symbol(' '))
-                .add(new Terrain(false));
+                .add(new Terrain(false))
+                .add(new VacuumTransformer());
     }
 
     private void buildFloor(Coord coord) {
@@ -51,7 +52,8 @@ public class StationBuilder {
         new Entity(coord)
                 .add(new Health())
                 .add(new Symbol('@', 1))
-                .add(new WayPoint(coord.add(new Coord(0, 2))));
+                .add(new WayPoint(coord.add(new Coord(0, 2))))
+                .add(new BreathTransformer());
     }
 
     public void build() {

@@ -36,19 +36,8 @@ public class AtmosphericController extends System {
                 } catch (ComponentNotFoundException e) {}
                 try {
                     GasTransformer transformer = ent.getComponent(GasTransformer.class);
-                    GasStorage storage = null;
-                    for (Entity ent2 : Entity.getAt(ent.getCoord())) {
-                        try {
-                            storage = ent2.getComponent(GasStorage.class);
-                        } catch (ComponentNotFoundException e) {}
-                    }
-                    if (storage != null) {
-                        boolean success = transformer.transform(storage);
-                        if (!success) {
-                            Health hp = ent.getComponent(Health.class);
-                            hp.subtract(transformer.getFailurePenalty());
-                        }
-                    }
+                    GasStorage storage = Entity.getComponentAt(ent.getCoord(), GasStorage.class);
+                    transformer.transform(storage);
                 } catch (ComponentNotFoundException e) {}
             }
         }
