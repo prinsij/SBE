@@ -18,6 +18,11 @@ public class GasStorage extends Component {
         C02;
     }
     private Map<GAS, Integer> storage = new TreeMap<>();
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     private boolean active = true;
 
     public GasStorage(boolean active) {

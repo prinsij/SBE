@@ -49,7 +49,8 @@ public class StationBuilder {
         new Entity(coord)
                 .add(gas)
                 .add(new Symbol('%'))
-                .add(new Terrain(false));
+                .add(new Terrain(false))
+                .add(new OpenCloseActivation());
     }
 
     private void placePerson(Coord coord) {

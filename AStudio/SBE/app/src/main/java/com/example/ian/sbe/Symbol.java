@@ -18,7 +18,11 @@ public class Symbol extends Component {
         this.layer = layer;
     }
 
-    private final char symbol;
+    public void setSymbol(char symbol) {
+        this.symbol = symbol;
+    }
+
+    private char symbol;
 
 
     public int getLayer() {

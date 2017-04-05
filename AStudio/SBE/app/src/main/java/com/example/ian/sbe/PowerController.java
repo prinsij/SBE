@@ -19,4 +19,27 @@ public class PowerController extends System {
         }
         return total;
     }
+
+    public void toggleAirlock(Coord where) {
+        for (Entity entity : Entity.getAt(where)) {
+            toggleAirlock(entity);
+        }
+    }
+
+    private void toggleAirlock(Entity entity) {
+        try {
+            entity.getComponent(OpenCloseActivation.class);
+            Terrain terrain = entity.getComponent(Terrain.class);
+            terrain.setPassable(!terrain.isPassable());
+            try {
+                if (terrain.isPassable()) {
+                    entity.getComponent(Symbol.class).setSymbol(OpenCloseActivation.open);
+                } else {
+                    entity.getComponent(Symbol.class).setSymbol(OpenCloseActivation.closed);
+                }
+            } catch (ComponentNotFoundException e) {}
+            GasStorage gas = entity.getComponent(GasStorage.class);
+            gas.setActive(!gas.isActive());
+        } catch (ComponentNotFoundException e) {}
+    }
 }

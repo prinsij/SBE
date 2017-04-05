@@ -5,10 +5,14 @@ package com.example.ian.sbe;
  */
 
 public class Terrain extends Component {
-    private final boolean isPassable;
+    private boolean isPassable;
 
     public boolean isPassable() {
         return isPassable;
+    }
+
+    public void setPassable(boolean isPassable) {
+        this.isPassable = isPassable;
     }
 
     Terrain(boolean isPassable) {
