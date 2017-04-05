@@ -35,17 +35,21 @@ public class StationBuilder {
     }
 
     private void buildFloor(Coord coord) {
+        GasStorage gas = new GasStorage();
+        gas.airFill();
         new Entity(coord)
-                .add(new GasStorage(GasStorage.GAS.OXYGEN))
+                .add(gas)
                 .add(new Symbol('.'))
                 .add(new Terrain(true));
     }
 
     private void buildAirlock(Coord coord) {
+        GasStorage gas = new GasStorage(false);
+        gas.airFill();
         new Entity(coord)
-                .add(new GasStorage(false))
+                .add(gas)
                 .add(new Symbol('%'))
-                .add(new Terrain(true));
+                .add(new Terrain(false));
     }
 
     private void placePerson(Coord coord) {

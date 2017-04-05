@@ -24,6 +24,13 @@ public class GasStorage extends Component {
         this.active = active;
     }
 
+    public void airFill() {
+        this.storage.clear();
+        this.storage.put(GAS.OXYGEN, 21);
+        this.storage.put(GAS.NITROGEN, 73);
+        this.storage.put(GAS.C02, 6);
+    }
+
     public int getPressure() {
         int total = 0;
         for (GAS gas : GAS.values()) {
