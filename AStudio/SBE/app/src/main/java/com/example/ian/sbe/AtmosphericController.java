@@ -43,4 +43,14 @@ public class AtmosphericController extends System {
         }
         Log.d("SBE", "atmo complete");
     }
+
+    public void breachHull(Coord where) {
+        for (Entity entity : Entity.getAt(where)) {
+            try {
+                entity.getComponent(Terrain.class);
+                Entity.deleteEntity(entity);
+            } catch (ComponentNotFoundException e) {}
+        }
+        StationBuilder.buildSpace(where);
+    }
 }

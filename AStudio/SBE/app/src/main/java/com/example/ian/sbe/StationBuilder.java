@@ -26,7 +26,7 @@ public class StationBuilder {
                 .add(new Terrain(false));
     }
 
-    private void buildSpace(Coord coord) {
+    public static void buildSpace(Coord coord) {
         new Entity(coord)
                 .add(new GasStorage())
                 .add(new Symbol(' '))
