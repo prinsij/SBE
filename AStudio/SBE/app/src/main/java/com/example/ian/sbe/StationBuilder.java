@@ -16,8 +16,8 @@ public class StationBuilder {
     }
 
     public StationBuilder() {
-        this.X = 30;
-        this.Y = 30;
+        this.X = 20;
+        this.Y = 20;
     }
 
     private void buildWall(Coord coord) {

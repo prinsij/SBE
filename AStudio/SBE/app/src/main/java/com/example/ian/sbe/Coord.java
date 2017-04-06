@@ -1,10 +1,13 @@
 package com.example.ian.sbe;
 
+import java.io.Serializable;
+
 /**
  * Created by Ian on 2017-04-01.
  */
 
-public class Coord {
+public class Coord implements Serializable {
+    private static final long serialVersionUID = 2;
     private final int x, y;
     public static final Coord[] ORTHO = {new Coord(0,1),new Coord(1,0),new Coord(1,1),
                                          new Coord(0,-1),new Coord(-1,0),new Coord(-1,-1),

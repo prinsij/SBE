@@ -1,5 +1,6 @@
 package com.example.ian.sbe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,17 +9,20 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Entity implements Comparable<Entity> {
+public class Entity implements Comparable<Entity>, Serializable {
+    private static final long serialVersionUID = 1;
     private int id = 0;
     private Coord coord;
     private static Map<Coord, Set<Entity>> entities = new HashMap<>();
     private static int currId = 0;
     private List<Component> components = new ArrayList<>();
 
-    public static Iterable<Entity> allEntities() {
-        Set<Entity> result = new TreeSet<>();
+    public static ArrayList<Entity> allEntities() {
+        ArrayList<Entity> result = new ArrayList<>();
         for (Set<Entity> set : entities.values()) {
-            result.addAll(set);
+            for (Entity entity : set) {
+                result.add(entity);
+            }
         }
         return result;
     }
@@ -154,6 +158,6 @@ public class Entity implements Comparable<Entity> {
     }
 
     public String toString() {
-        return Integer.toString(this.id);
+        return "Entity:" + Integer.toString(this.id);
     }
 }
