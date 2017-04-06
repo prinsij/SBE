@@ -59,4 +59,12 @@ public class AtmosphericController extends System {
         }
         StationBuilder.buildSpace(where);
     }
+
+    public void addToxin(Coord where) {
+        try {
+            GasStorage gas = Entity.getComponentAt(where, GasStorage.class);
+            gas.clear();
+            gas.setAmount(GasStorage.GAS.TOXIN, 100);
+        } catch (ComponentNotFoundException e) {}
+    }
 }
