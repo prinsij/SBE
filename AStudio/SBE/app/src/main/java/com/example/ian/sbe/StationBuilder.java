@@ -16,8 +16,8 @@ public class StationBuilder {
     }
 
     public StationBuilder() {
-        this.X = 20;
-        this.Y = 20;
+        this.X = 17;
+        this.Y = 17;
     }
 
     private void buildWall(Coord coord) {
@@ -56,9 +56,15 @@ public class StationBuilder {
     private void placePerson(Coord coord) {
         new Entity(coord)
                 .add(new Health())
-                .add(new Symbol('@', 1))
+                .add(new Symbol('@', 2))
                 .add(new WayPoint(coord.add(new Coord(0, 2))))
                 .add(new BreathTransformer());
+    }
+
+    private void placeRegulator(Coord coord) {
+        new Entity(coord)
+                .add(new RegulatorTransformer())
+                .add(new Symbol(',', 1));
     }
 
     public void build() {
@@ -87,11 +93,13 @@ public class StationBuilder {
                     buildFloor(roomCoord.add(new Coord(roomWidth+2, roomHeight/2+1)));
                     buildWall(roomCoord.add(new Coord(roomWidth+2, roomHeight/2+2)));
                 }
+                // vertical tunnel
                 if (y != roomY -1) {
                     buildWall(roomCoord.add(new Coord(roomWidth/2, roomHeight+2)));
                     buildFloor(roomCoord.add(new Coord(roomWidth/2+1, roomHeight+2)));
                     buildWall(roomCoord.add(new Coord(roomWidth/2+2, roomHeight+2)));
                 }
+                placeRegulator(roomCoord.add(new Coord(roomWidth/2+1, roomHeight/2+1)));
             }
         }
         //fill in the empty space

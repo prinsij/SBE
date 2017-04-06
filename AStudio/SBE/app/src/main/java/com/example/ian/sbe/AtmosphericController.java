@@ -12,19 +12,22 @@ import java.util.List;
 
 public class AtmosphericController extends System {
     public void mainLoop() {
-        while (Utils.getRand().nextDouble() >= Settings.getPercolateHaltChance()) {
+        for (int i=0; i < Settings.getGasTickRate(); i++) {
             Log.d("SBE", "atmo loop");
-            for (Entity ent : Entity.allEntities()) {
+            for (Entity ent : Entity.getAllWith(GasStorage.class)) {
                 try {
+                    //Log.d("SBE", "atmo entity" + ent);
                     GasStorage gas = ent.getComponent(GasStorage.class);
                     if (!gas.isActive()) continue;
                     List<Coord> cardinal = Arrays.asList(Coord.CARDINAL);
                     Collections.shuffle(cardinal);
+                    //Log.d("SBE", "cardinal:"+cardinal.toString());
                     for (Coord coord : cardinal) {
-                        for (Entity ent2 : Entity.getAt(coord)) {
+                        for (Entity ent2 : Entity.getAt(coord.add(ent.getCoord()))) {
                             try {
                                 GasStorage gas2 = ent2.getComponent(GasStorage.class);
                                 if (!gas2.isActive()) continue;
+                                //Log.d("SBE", "swap" + ent.getCoord() + ent2.getCoord());
                                 for (GasStorage.GAS gastype : GasStorage.GAS.values()) {
                                     int swap = (gas2.getAmount(gastype) - gas.getAmount(gastype)) / 2;
                                     gas.setAmount(gastype, gas.getAmount(gastype) + swap);
@@ -34,11 +37,14 @@ public class AtmosphericController extends System {
                         }
                     }
                 } catch (ComponentNotFoundException e) {}
+            }
+            for (Entity entity : Entity.getAllWith(GasTransformer.class)) {
                 try {
-                    GasTransformer transformer = ent.getComponent(GasTransformer.class);
-                    GasStorage storage = Entity.getComponentAt(ent.getCoord(), GasStorage.class);
+                    GasTransformer transformer = entity.getComponent(GasTransformer.class);
+                    GasStorage storage = Entity.getComponentAt(entity.getCoord(), GasStorage.class);
                     transformer.transform(storage);
-                } catch (ComponentNotFoundException e) {}
+                } catch (ComponentNotFoundException e) {
+                }
             }
         }
         Log.d("SBE", "atmo complete");

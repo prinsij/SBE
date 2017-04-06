@@ -25,10 +25,13 @@ public class Health extends Component {
 
     public int checkForDamage(GasStorage gas) {
         int dmg = 0;
-        if (gas.getAmount(GasStorage.GAS.OXYGEN) < .15) {
+        if (gas.getAmount(GasStorage.GAS.OXYGEN) < 15) {
             dmg += 5;
         }
-        if (gas.getAmount(GasStorage.GAS.C02) > .1) {
+        if (gas.getAmount(GasStorage.GAS.C02) > 12) {
+            dmg += 5;
+        }
+        if (gas.getAmount(GasStorage.GAS.TOXIN > 5)) {
             dmg += 5;
         }
         if (abs(gas.getPressure() - 100) > 20) {

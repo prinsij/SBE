@@ -17,6 +17,21 @@ public class Entity implements Comparable<Entity>, Serializable {
     private static int currId = 0;
     private List<Component> components = new ArrayList<>();
 
+    public static void clearEntities() {
+        entities.clear();
+    }
+
+    public static void register(Entity entity) {
+        Coord coord = entity.getCoord();
+        if (entities.containsKey(coord)) {
+            entities.get(coord).add(entity);
+        } else {
+            Set<Entity> set = new HashSet<>();
+            set.add(entity);
+            entities.put(coord, set);
+        }
+    }
+
     public static ArrayList<Entity> allEntities() {
         ArrayList<Entity> result = new ArrayList<>();
         for (Set<Entity> set : entities.values()) {
@@ -31,13 +46,7 @@ public class Entity implements Comparable<Entity>, Serializable {
         this.id = currId;
         this.coord = coord;
         currId += 1;
-        if (entities.containsKey(coord)) {
-            entities.get(coord).add(this);
-        } else {
-            Set<Entity> set = new HashSet<>();
-            set.add(this);
-            entities.put(coord, set);
-        }
+        register(this);
     }
 
     public Coord getCoord() {

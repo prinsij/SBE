@@ -16,11 +16,13 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             StationBuilder builder = new StationBuilder();
             builder.build();
+
             LoadSaveController.serialize("testsave.sbe", getApplicationContext());
             Log.d("SBE", "before serial: " + Entity.allEntities().size());
             ArrayList<Entity> serial = LoadSaveController.deserialize("testsave.sbe", getApplicationContext());
             Log.d("SBE", "serial: " + serial.size());
             Log.d("SBE", "after serial: " + Entity.allEntities().size());
+
             AtmosphericController atmo = new AtmosphericController();
             PersonnelController persons = new PersonnelController();
             while (true) {
@@ -43,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("SBE", str.toString());
                     }
                     Log.d("SBE", "map print");
+                    try {
+                        Log.d("SBE", Entity.getComponentAt(new Coord(3, 3), GasStorage.class).toString());
+                    } catch (ComponentNotFoundException e) {}
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             Log.d("SBE", e.getMessage());
             Log.d("SBE", e.getStackTrace().toString());
         }

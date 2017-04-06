@@ -5,9 +5,9 @@ package com.example.ian.sbe;
  */
 
 public class Settings {
-    private static double percolateHaltChance = 1.0;
+    private static final int gasTickRate = 1;
 
-    public static double getPercolateHaltChance() {
-        return percolateHaltChance;
+    public static int getGasTickRate() {
+        return gasTickRate;
     }
 }

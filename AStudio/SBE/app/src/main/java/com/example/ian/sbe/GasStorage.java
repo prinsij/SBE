@@ -15,7 +15,8 @@ public class GasStorage extends Component {
     public enum GAS {
         OXYGEN,
         NITROGEN,
-        C02;
+        C02,
+        TOXIN;
     }
     private Map<GAS, Integer> storage = new TreeMap<>();
 
@@ -62,7 +63,27 @@ public class GasStorage extends Component {
         }
     }
 
+    public String toString() {
+        String str = "";
+        str += "oxy:" + this.getAmount(GAS.OXYGEN) + "\n";
+        str += "nitro:" + this.getAmount(GAS.NITROGEN) + "\n";
+        str += "c02:" + this.getAmount(GAS.C02) + "\n";
+        str += "toxin:" + this.getAmount(GAS.TOXIN) + "\n";
+        return str;
+    }
+
     public void setAmount(GAS gas, int amount) {
+        if (amount < 0) {
+            amount = 0;
+        }
         this.storage.put(gas, amount);
+    }
+
+    public void addGas(GAS gas, int amount) {
+        this.setAmount(gas, this.getAmount(gas) + amount);
+    }
+
+    public void subtractGas(GAS gas, int amount) {
+        this.setAmount(gas, this.getAmount(gas) - amount);
     }
 }
