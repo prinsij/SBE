@@ -90,6 +90,12 @@ The first part of this document provides a graphical representation of the funct
 \label{sub:system_architecture}
 The overall architecture of the system is a \textbf{Presentation, Abstraction, and Control (PAC)} architecture. The three subsystems, as well as a few other major components are all PAC agents, with a single master PAC agent which orchestrates them. The PAC architecture was chosen first because it is an effective architecture for interaction-orientated software. It was chosen over other such architectures because it is an effective model for systems with a set of agents, each with their own model and interface, such as this. It is useful for situations where agents may need to be easily removed, replaced, or added later in development, a requirement for this system. Since each subsystem must have a separate, toggle-able view, an architecture that supports multiple Presentations is a good choice. The hierarchical nature of PAC allows for low coupling as subsystems can have an overarching controller which can orchestrate communication, rather than tying each subsystem directly to each other subsystem. Lastly, MVC is a poor choice as it would lead to low cohesion when all the subsystems are grouped into a single controller.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=160mm]{ArchitecturalDiagram.png}
+	\caption{The Structural Architecture diagram}
+\end{figure}
+
 There is also an Entity Component System (ECS) architecture, which is common in games to simplify inheritance hierarchies and reduce coupling in cases where objects may have relevant properties to multiple subsystems (for eg, a tile may have properties relevant to both atmospheric and power subsystems). The contents of the station, such as tiles, people, and devices, are entities, each of which contain a set of components, each relevant to a specific subsystem.
 
 \subsection{Subsystems}
