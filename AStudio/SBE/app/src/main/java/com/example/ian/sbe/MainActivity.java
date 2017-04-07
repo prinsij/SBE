@@ -262,9 +262,14 @@ public class MainActivity extends AppCompatActivity
 
                     AtmosphericController atmo = new AtmosphericController();
                     PersonnelController persons = new PersonnelController();
+                    PowerController power = new PowerController();
                     while (true) {
-                        atmo.mainLoop();
-                        persons.mainLoop();
+                        if (atmo.isEnabled())
+                            atmo.mainLoop();
+                        if (persons.isEnabled())
+                            persons.mainLoop();
+                        if (power.isEnabled())
+                            power.mainLoop();
                         for (int y = 0; y < builder.getY(); y++) {
                             StringBuilder str = new StringBuilder();
                             for (int x = 0; x < builder.getX(); x++) {
@@ -345,8 +350,10 @@ public class MainActivity extends AppCompatActivity
                     atmo.mainLoop();
                 if (persons.isEnabled())
                     persons.mainLoop();
-                if (power.isEnabled())
+                if (power.isEnabled()) {
+                    Log.d("SBE", "power loop");
                     power.mainLoop();
+                }
                 if (Utils.getRand().nextDouble() < 1.0) {
                     for (int y = 0; y < builder.getY(); y++) {
                         StringBuilder str = new StringBuilder();

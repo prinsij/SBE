@@ -88,7 +88,7 @@ public class Entity implements Comparable<Entity>, Serializable {
         throw new ComponentNotFoundException();
     }
 
-    public static <T extends Component> Iterable<T> getAllComponentsAt(Coord coord, Class<T> component) {
+    public static <T extends Component> List<T> getAllComponentsAt(Coord coord, Class<T> component) {
         ArrayList<T> result = new ArrayList<T>();
         for (Entity entity : getAt(coord)) {
             try {

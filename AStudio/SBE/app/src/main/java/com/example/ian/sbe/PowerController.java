@@ -1,5 +1,7 @@
 package com.example.ian.sbe;
 
+import android.util.Log;
+
 /**
  * Created by Ian on 2017-04-02.
  */
@@ -18,6 +20,12 @@ public class PowerController extends SubSystem {
                     draw -= power.getAmount();
                     power.toggle(false);
                 }
+            }
+        }
+        for (Entity entity : Entity.getAllWith(OpenCloseActivation.class)) {
+            // randomly toggle doors for the demo
+            if (Utils.getRand().nextDouble() < .1) {
+                toggleAirlock(entity);
             }
         }
     }
@@ -47,12 +55,17 @@ public class PowerController extends SubSystem {
     }
 
     private void toggleAirlock(Entity entity) {
+        Log.d("SBE", "toggle airlock: " + entity.getCoord());
         try {
             PowerDraw power = entity.getComponent(PowerDraw.class);
             if (!power.isOn()) {
                 return;
             }
         } catch (ComponentNotFoundException e) {}
+        // bail out if there's a health-having entity so we don't crush them
+        if (Entity.getAllComponentsAt(entity.getCoord(), Health.class).size() > 0) {
+            return;
+        }
         try {
             entity.getComponent(OpenCloseActivation.class);
             Terrain terrain = entity.getComponent(Terrain.class);
