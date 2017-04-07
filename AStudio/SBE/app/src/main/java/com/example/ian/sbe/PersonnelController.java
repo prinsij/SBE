@@ -55,6 +55,11 @@ public class PersonnelController extends System {
         }
     }
 
+    // stimulus
+    public void assignWayPoint(Entity person, Coord where) {
+        person.add(new WayPoint(where));
+    }
+
     // simple BFS path-finding
     private List<Coord> pathBetween(Coord from, Coord to) throws Exception {
         Queue<Coord> queue = new LinkedList<Coord>();

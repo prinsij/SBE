@@ -14,20 +14,20 @@ public class AtmosphericController extends System {
     public void mainLoop() {
         for (int i=0; i < Settings.getGasTickRate(); i++) {
             Log.d("SBE", "atmo loop");
+            // iterate over gas-storing entities
+            // then swap gases with neighbours based on differences
+            // in each type
             for (Entity ent : Entity.getAllWith(GasStorage.class)) {
                 try {
-                    //Log.d("SBE", "atmo entity" + ent);
                     GasStorage gas = ent.getComponent(GasStorage.class);
                     if (!gas.isActive()) continue;
                     List<Coord> cardinal = Arrays.asList(Coord.CARDINAL);
                     Collections.shuffle(cardinal);
-                    //Log.d("SBE", "cardinal:"+cardinal.toString());
                     for (Coord coord : cardinal) {
                         for (Entity ent2 : Entity.getAt(coord.add(ent.getCoord()))) {
                             try {
                                 GasStorage gas2 = ent2.getComponent(GasStorage.class);
                                 if (!gas2.isActive()) continue;
-                                //Log.d("SBE", "swap" + ent.getCoord() + ent2.getCoord());
                                 for (GasStorage.GAS gastype : GasStorage.GAS.values()) {
                                     int swap = (gas2.getAmount(gastype) - gas.getAmount(gastype)) / 2;
                                     gas.setAmount(gastype, gas.getAmount(gastype) + swap);
@@ -43,13 +43,13 @@ public class AtmosphericController extends System {
                     GasTransformer transformer = entity.getComponent(GasTransformer.class);
                     GasStorage storage = Entity.getComponentAt(entity.getCoord(), GasStorage.class);
                     transformer.transform(storage);
-                } catch (ComponentNotFoundException e) {
-                }
+                } catch (ComponentNotFoundException e) {}
             }
         }
         Log.d("SBE", "atmo complete");
     }
 
+    // stimulus
     public void breachHull(Coord where) {
         for (Entity entity : Entity.getAt(where)) {
             try {
@@ -60,11 +60,19 @@ public class AtmosphericController extends System {
         StationBuilder.buildSpace(where);
     }
 
+    // stimulus
     public void addToxin(Coord where) {
         try {
             GasStorage gas = Entity.getComponentAt(where, GasStorage.class);
             gas.clear();
             gas.setAmount(GasStorage.GAS.TOXIN, 100);
         } catch (ComponentNotFoundException e) {}
+    }
+
+    // stimulus
+    public void restoreAir() {
+        for (GasStorage gas : Entity.getAllComponents(GasStorage.class)) {
+            gas.airFill();
+        }
     }
 }

@@ -5,5 +5,15 @@ package com.example.ian.sbe;
  */
 
 public abstract class System {
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    // allows swapping of system at runtime
+    private boolean enabled = true;
     public abstract void mainLoop();
 }

@@ -22,6 +22,13 @@ public class PowerController extends System {
         }
     }
 
+    // stimulus
+    public void toggleDevice(Coord where) {
+        for (PowerDraw power : Entity.getAllComponentsAt(where, PowerDraw.class)) {
+            power.toggle(!power.isOn());
+        }
+    }
+
     private int totalStationDraw() {
         int total = 0;
         for (PowerDraw power : Entity.getAllComponents(PowerDraw.class)) {
