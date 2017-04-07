@@ -1,4 +1,4 @@
-package com.example.steven.threea04menus;
+package com.example.ian.sbe;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -17,6 +17,7 @@ import android.widget.ScrollView;
         - Save
 
  */
+/*
 public class MainActivity extends Activity {
 
     static int inval = 0;
@@ -35,3 +36,4 @@ public class MainActivity extends Activity {
 
 }
 
+*/

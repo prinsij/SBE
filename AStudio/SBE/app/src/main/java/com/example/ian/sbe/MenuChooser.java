@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 /**
  * Created by Steven on 04/04/2017.
  */
+/*
 public class MenuChooser extends LinearLayout{
 
     private static final int BUTTON_WIDTH = 500;
@@ -110,3 +111,4 @@ public class MenuChooser extends LinearLayout{
     }
 
 }
+*/

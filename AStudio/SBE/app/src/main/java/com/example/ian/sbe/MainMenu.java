@@ -1,4 +1,4 @@
-package com.example.steven.threea04menus;
+package com.example.ian.sbe;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -40,7 +40,7 @@ public class MainMenu extends Activity {
 
         ll.addView(tv);
         ll.addView(hl);
-        ll.setBackgroundResource(R.drawable.spaceimage);
+        //ll.setBackgroundResource(R.drawable.spaceimage);
 
         this.setContentView(ll);
     }

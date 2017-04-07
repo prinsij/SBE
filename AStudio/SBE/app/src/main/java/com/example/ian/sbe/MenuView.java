@@ -1,4 +1,4 @@
-package com.example.steven.threea04menus;
+package com.example.ian.sbe;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 /**
  * Created by Steven on 05/04/2017.
  */
+/*
 public class MenuView {
 
     ScrollView sv;
@@ -68,3 +69,4 @@ public class MenuView {
         this.sv.invalidate();;
     }
 }
+*/
