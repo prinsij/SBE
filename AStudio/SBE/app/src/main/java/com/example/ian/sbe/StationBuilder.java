@@ -5,14 +5,14 @@ package com.example.ian.sbe;
  */
 
 public class StationBuilder {
-    private final int X, Y;
+    public static int X, Y;
     private final int startingCrew = 3;
     private final int roomX = 3, roomY = 3, roomWidth = 3, roomHeight = 3, separation = 1;
 
 
     public StationBuilder(int x, int y) {
-        this.X = x;
-        this.Y = y;
+        X = x;
+        Y = y;
     }
 
     public StationBuilder() {
@@ -44,12 +44,12 @@ public class StationBuilder {
     }
 
     private void buildAirlock(Coord coord) {
-        GasStorage gas = new GasStorage(false);
+        GasStorage gas = new GasStorage();
         gas.airFill();
         new Entity(coord)
                 .add(gas)
-                .add(new Symbol('%'))
-                .add(new Terrain(false))
+                .add(new Symbol('O'))
+                .add(new Terrain(true))
                 .add(new OpenCloseActivation())
                 .add(new PowerDraw(5));
     }

@@ -42,6 +42,7 @@ public class PersonnelController extends SubSystem {
                         Log.d("SBE", "nextpos: " + nextPos.toString());
                         if (nextPos.equals(where)) {
                             entity.removeComponent(task);
+                            entity.add(new WayPoint(randValidPosition(entity.getCoord())));
                         }
                     } catch (Exception e) {
                         Log.d("SBE", e.getMessage().toString());
@@ -91,5 +92,16 @@ public class PersonnelController extends SubSystem {
             }
         }
         throw new Exception("No path found");
+    }
+
+    private Coord randValidPosition(Coord from) {
+        while (true) {
+            Coord coord = new Coord(Utils.getRand().nextInt(StationBuilder.X),
+                                    Utils.getRand().nextInt(StationBuilder.Y));
+            try {
+                pathBetween(from, coord);
+                return coord;
+            } catch (Exception e) {}
+        }
     }
 }
