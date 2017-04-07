@@ -7,7 +7,19 @@ package com.example.ian.sbe;
 public class PowerController extends System {
     @Override
     public void mainLoop() {
-
+        int draw = totalStationDraw();
+        if (draw > 0) {
+            // turn off drawing devices semi-randomly until power within means
+            for (PowerDraw power : Entity.getAllComponents(PowerDraw.class)) {
+                if (draw <= 0) {
+                    break;
+                }
+                if (power.getAmount() > 0) {
+                    draw -= power.getAmount();
+                    power.toggle(false);
+                }
+            }
+        }
     }
 
     private int totalStationDraw() {
@@ -20,6 +32,7 @@ public class PowerController extends System {
         return total;
     }
 
+    // stimulus
     public void toggleAirlock(Coord where) {
         for (Entity entity : Entity.getAt(where)) {
             toggleAirlock(entity);
@@ -27,6 +40,12 @@ public class PowerController extends System {
     }
 
     private void toggleAirlock(Entity entity) {
+        try {
+            PowerDraw power = entity.getComponent(PowerDraw.class);
+            if (!power.isOn()) {
+                return;
+            }
+        } catch (ComponentNotFoundException e) {}
         try {
             entity.getComponent(OpenCloseActivation.class);
             Terrain terrain = entity.getComponent(Terrain.class);
@@ -38,8 +57,11 @@ public class PowerController extends System {
                     entity.getComponent(Symbol.class).setSymbol(OpenCloseActivation.closed);
                 }
             } catch (ComponentNotFoundException e) {}
+        } catch (ComponentNotFoundException e) {}
+        try {
             GasStorage gas = entity.getComponent(GasStorage.class);
             gas.setActive(!gas.isActive());
         } catch (ComponentNotFoundException e) {}
+
     }
 }

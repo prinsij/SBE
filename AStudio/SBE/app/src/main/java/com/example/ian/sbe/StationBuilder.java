@@ -50,7 +50,8 @@ public class StationBuilder {
                 .add(gas)
                 .add(new Symbol('%'))
                 .add(new Terrain(false))
-                .add(new OpenCloseActivation());
+                .add(new OpenCloseActivation())
+                .add(new PowerDraw(5));
     }
 
     private void placePerson(Coord coord) {
@@ -64,7 +65,14 @@ public class StationBuilder {
     private void placeRegulator(Coord coord) {
         new Entity(coord)
                 .add(new RegulatorTransformer())
-                .add(new Symbol(',', 1));
+                .add(new Symbol(',', 1))
+                .add(new PowerDraw(5));
+    }
+
+    private void placeGenerator(Coord coord) {
+        new Entity(coord)
+                .add(new PowerDraw(-25))
+                .add(new Symbol('G', 1));
     }
 
     public void build() {
@@ -99,7 +107,9 @@ public class StationBuilder {
                     buildFloor(roomCoord.add(new Coord(roomWidth/2+1, roomHeight+2)));
                     buildWall(roomCoord.add(new Coord(roomWidth/2+2, roomHeight+2)));
                 }
+                // devices
                 placeRegulator(roomCoord.add(new Coord(roomWidth/2+1, roomHeight/2+1)));
+                placeGenerator(roomCoord.add(new Coord(roomWidth/2+2, roomHeight/2+1)));
             }
         }
         //fill in the empty space
