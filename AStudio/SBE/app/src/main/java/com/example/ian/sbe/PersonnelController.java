@@ -29,7 +29,6 @@ public class PersonnelController extends System {
         }
         // handle tasks
         for (Entity entity : Entity.getAllWith(Task.class)) {
-            Log.d("SBE", "Task user: " + entity.toString());
             try {
                 Task task = entity.getComponent(Task.class);
                 if (task instanceof WayPoint) {
@@ -41,9 +40,6 @@ public class PersonnelController extends System {
                         Log.d("SBE", "wp from " + entity.getCoord().toString() + " to " + where.toString());
                         entity.setCoord(nextPos);
                         Log.d("SBE", "nextpos: " + nextPos.toString());
-                        for (Coord item : path) {
-                            Log.d("SBE", "path: " + item.toString());
-                        }
                         if (nextPos.equals(where)) {
                             entity.removeComponent(task);
                         }

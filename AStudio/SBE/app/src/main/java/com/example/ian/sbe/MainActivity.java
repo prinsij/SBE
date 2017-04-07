@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -138,6 +139,10 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         output = (TextView) findViewById(R.id.output);
+        // http://stackoverflow.com/questions/6078194/how-to-set-font-width-in-an-android-textview
+        output.setTextScaleX(1.5f);
+        //output.setTextSize(12f);
+        output.setTypeface(Typeface.MONOSPACE);
 
 
 
@@ -260,47 +265,38 @@ public class MainActivity extends AppCompatActivity
                     while (true) {
                         atmo.mainLoop();
                         persons.mainLoop();
-                        if (Utils.getRand().nextDouble() < 1.0) {
-                            for (int y = 0; y < builder.getY(); y++) {
-                                StringBuilder str = new StringBuilder();
-                                for (int x = 0; x < builder.getX(); x++) {
-                                    int maxLayer = -1;
-                                    char maxSymbol = '?';
-                                    for (Symbol symbol : Entity.getAllComponentsAt(new Coord(x, y), Symbol.class)) {
-                                        if (symbol.getLayer() > maxLayer) {
-                                            maxLayer = symbol.getLayer();
-                                            maxSymbol = symbol.getSymbol();
-                                        }
+                        for (int y = 0; y < builder.getY(); y++) {
+                            StringBuilder str = new StringBuilder();
+                            for (int x = 0; x < builder.getX(); x++) {
+                                int maxLayer = -1;
+                                char maxSymbol = '?';
+                                for (Symbol symbol : Entity.getAllComponentsAt(new Coord(x, y), Symbol.class)) {
+                                    if (symbol.getLayer() > maxLayer) {
+                                        maxLayer = symbol.getLayer();
+                                        maxSymbol = symbol.getSymbol();
                                     }
-                                    str.append(' ').append(maxSymbol);
-                                    outputArray[y][x] = maxSymbol;
-
-
                                 }
-                                Log.d("SBE", str.toString());
-
+                                str.append(' ').append(maxSymbol);
+                                outputArray[y][x] = maxSymbol;
                             }
+                            Log.d("SBE", str.toString());
 
-                            Log.d("SBE", "map print");
-
-                            try {
-                                Log.d("SBE", Entity.getComponentAt(new Coord(3, 3), GasStorage.class).toString());
-                                String toPrint= new String();
-                                for (int y = 0;y < outputArray.length;y++){
-                                    String line ="";
-
-                                    for (int x = 0; x < outputArray.length;x++){
-                                        line+=outputArray[y][x]+" ";
-                                    }
-                                    toPrint+=line+"\n";
-                                }
-                                output.setText(toPrint);
-                                output.invalidate();
-                            } catch (ComponentNotFoundException e) {
-                            }
                         }
+                        Log.d("SBE", "map print");
+                        try {
+                            Log.d("SBE", Entity.getComponentAt(new Coord(3, 3), GasStorage.class).toString());
+                            String toPrint= new String();
+                            for (int y = 0;y < outputArray.length;y++){
+                                String line ="";
 
-
+                                for (int x = 0; x < outputArray.length;x++){
+                                    line+=outputArray[y][x];
+                                }
+                                toPrint+=line+"\n";
+                            }
+                            output.setText(toPrint);
+                            output.invalidate();
+                        } catch (ComponentNotFoundException e) {}
                     }
                 } catch (Exception e) {
                     Log.d("SBE", e.getMessage());
