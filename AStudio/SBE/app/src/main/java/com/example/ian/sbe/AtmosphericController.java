@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Ian on 2017-04-01.
  */
 
-public class AtmosphericController extends System {
+public class AtmosphericController extends SubSystem {
     public void mainLoop() {
         for (int i=0; i < Settings.getSingleton().getGasTickRate(); i++) {
             Log.d("SBE", "atmo loop");

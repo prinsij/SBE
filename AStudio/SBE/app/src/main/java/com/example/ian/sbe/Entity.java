@@ -10,6 +10,13 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.zip.CheckedOutputStream;
 
+/**
+ * Everything in the station (personnel, tiles, devices, etc) is an entity.
+ * Entities consist of a coordinate, identifier (not actually used so far, but useful for debug),
+ * and a list of components. Components hold data, and occasionally some constant behavior.
+ * Systems read components, and manipulate them as necessary.
+ * Each subsystem in the app is a SubSystem.
+ */
 public class Entity implements Comparable<Entity>, Serializable {
     private static final long serialVersionUID = 1;
     private int id = 0;

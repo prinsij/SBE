@@ -13,7 +13,7 @@ import java.util.Queue;
  * Created by Ian on 2017-04-02.
  */
 
-public class PersonnelController extends System {
+public class PersonnelController extends SubSystem {
 
     public void mainLoop() {
         // handle damage

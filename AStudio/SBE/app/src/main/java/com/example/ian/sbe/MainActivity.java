@@ -612,7 +612,7 @@ public class MainActivity extends AppCompatActivity
                 String statusMessage = "Watch out this interesting offer I came across today";
                 //File file = new File("main/res/drawable/image.jpg");
                 // File file2 = new File(new BufferedInputStream(getResources().openRawResource(R.drawable.image)))
-                // System.out.println(file.getPath());
+                // SubSystem.out.println(file.getPath());
 
                 StatusUpdate statusPost = new StatusUpdate(status);
 //                if (imagePath != null){
