@@ -7,20 +7,21 @@ import static java.lang.StrictMath.abs;
  */
 
 public class RegulatorTransformer extends GasTransformer {
-    private static int idealPressure = 100, idealo2 = 21, idealc02 = 6, idealToxin = 0;
-    private static int changeAmount = 3;
     @Override
     public void transform(GasStorage gasStorage) {
-        if (gasStorage.getAmount(GasStorage.GAS.C02) > idealc02) {
+        // adjust local atmosphere to desired levels, percolation will eventually fix the
+        // whole station if we keep this up
+        int changeAmount = Settings.getSingleton().getRegulatorChange();
+        if (gasStorage.getAmount(GasStorage.GAS.C02) > Settings.getSingleton().getIdealc02()) {
             gasStorage.subtractGas(GasStorage.GAS.C02, changeAmount);
         }
-        if (gasStorage.getAmount(GasStorage.GAS.OXYGEN) < idealo2) {
+        if (gasStorage.getAmount(GasStorage.GAS.OXYGEN) < Settings.getSingleton().getIdealo2()) {
             gasStorage.addGas(GasStorage.GAS.OXYGEN, changeAmount);
         }
-        if (gasStorage.getAmount(GasStorage.GAS.TOXIN) > idealToxin) {
+        if (gasStorage.getAmount(GasStorage.GAS.TOXIN) > Settings.getSingleton().getIdealToxin()) {
             gasStorage.subtractGas(GasStorage.GAS.TOXIN, changeAmount);
         }
-        int pressureDiff = gasStorage.getPressure() - idealPressure;
+        int pressureDiff = gasStorage.getPressure() - Settings.getSingleton().getIdealPressure();
         if (pressureDiff == 0) {
             return;
         }

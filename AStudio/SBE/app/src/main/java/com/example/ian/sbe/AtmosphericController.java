@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AtmosphericController extends System {
     public void mainLoop() {
-        for (int i=0; i < Settings.getGasTickRate(); i++) {
+        for (int i=0; i < Settings.getSingleton().getGasTickRate(); i++) {
             Log.d("SBE", "atmo loop");
             // iterate over gas-storing entities
             // then swap gases with neighbours based on differences
