@@ -29,7 +29,7 @@ public class PowerController extends System {
         }
     }
 
-    private int totalStationDraw() {
+    public int totalStationDraw() {
         int total = 0;
         for (PowerDraw power : Entity.getAllComponents(PowerDraw.class)) {
             if (power.isOn()) {

@@ -109,7 +109,7 @@ public class StationBuilder {
                 }
                 // devices
                 placeRegulator(roomCoord.add(new Coord(roomWidth/2+1, roomHeight/2+1)));
-                placeGenerator(roomCoord.add(new Coord(roomWidth/2+2, roomHeight/2+1)));
+                placeGenerator(roomCoord.add(new Coord(roomWidth/2+2, roomHeight/2+2)));
             }
         }
         //fill in the empty space

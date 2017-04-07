@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         Log.d("SBE", Entity.getComponentAt(new Coord(3, 3), GasStorage.class).toString());
                     } catch (ComponentNotFoundException e) {}
+                    Log.d("SBE", "total draw (-): "+power.totalStationDraw());
                 }
             }
         } catch (Exception e) {

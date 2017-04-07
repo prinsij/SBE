@@ -56,10 +56,7 @@ public class AtmosphericController extends System {
     // stimulus
     public void breachHull(Coord where) {
         for (Entity entity : Entity.getAt(where)) {
-            try {
-                entity.getComponent(Terrain.class);
-                Entity.deleteEntity(entity);
-            } catch (ComponentNotFoundException e) {}
+            Entity.deleteEntity(entity);
         }
         StationBuilder.buildSpace(where);
     }
