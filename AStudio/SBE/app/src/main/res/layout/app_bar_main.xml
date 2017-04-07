@@ -30,6 +30,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@android:color/holo_blue_light"
-        app:srcCompat="@drawable/ic_twitter" />
+        app:srcCompat="@drawable/ic_twitter"
+        android:visibility="gone"/>
 
 </android.support.design.widget.CoordinatorLayout>
