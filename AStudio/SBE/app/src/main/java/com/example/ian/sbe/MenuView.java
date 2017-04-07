@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * Created by Steven on 05/04/2017.
  */
-/*
+
 public class MenuView {
 
     ScrollView sv;
@@ -29,7 +29,7 @@ public class MenuView {
         TextView tt = new TextView(context);
         tt.setText("HASHDH");
         tt.setTextSize(100);
-        this.sv.setBackgroundResource(R.drawable.spaceimage);
+        //this.sv.setBackgroundResource(res.drawable.spaceimage);
     }
 
     public void setMenus(int changeState) {
@@ -69,4 +69,3 @@ public class MenuView {
         this.sv.invalidate();;
     }
 }
-*/

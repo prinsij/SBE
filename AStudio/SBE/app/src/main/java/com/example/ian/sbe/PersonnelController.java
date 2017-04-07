@@ -57,6 +57,7 @@ public class PersonnelController extends System {
 
     // stimulus
     public void assignWayPoint(Entity person, Coord where) {
+        person.removeAllComponents(Task.class);
         person.add(new WayPoint(where));
     }
 

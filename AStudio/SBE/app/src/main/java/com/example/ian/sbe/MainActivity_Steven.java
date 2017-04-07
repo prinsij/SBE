@@ -19,18 +19,18 @@ import android.widget.ScrollView;
 
  */
 
-/*
-public class MainActivity extends Activity {
+
+public class MainActivity_Steven extends Activity {
 
     static int inval = 0;
-    MenuView mv;
+    com.example.ian.sbe.MenuView mv;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        this.mv = new MenuView(this);
+        this.mv = new com.example.ian.sbe.MenuView(this);
         this.setContentView(this.mv.sv);
     }
 
@@ -38,4 +38,3 @@ public class MainActivity extends Activity {
 
 }
 
-*/

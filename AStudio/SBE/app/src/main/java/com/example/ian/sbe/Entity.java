@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.zip.CheckedOutputStream;
 
 public class Entity implements Comparable<Entity>, Serializable {
     private static final long serialVersionUID = 1;
@@ -93,6 +94,16 @@ public class Entity implements Comparable<Entity>, Serializable {
     public Entity add(Component component) {
         this.components.add(component);
         return this;
+    }
+
+    public <T extends Component> void removeAllComponents(Class<T> component) {
+        List<Component> toRemove = new ArrayList<>();
+        for (Component comp : this.components) {
+            try {
+                toRemove.add((T) comp);
+            } catch (ClassCastException e) {}
+        }
+        this.components.removeAll(toRemove);
     }
 
     public void setCoord(Coord coord) {

@@ -1,7 +1,8 @@
-package com.example.steven.threea04menus;
+package com.example.ian.sbe;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 /**
  * Created by Steven on 04/04/2017.
  */
-/*
+
 public class MenuChooser extends LinearLayout{
 
     private static final int BUTTON_WIDTH = 500;
@@ -99,7 +100,7 @@ public class MenuChooser extends LinearLayout{
         if(k == 4){
             // exit button has been clicekd
         } else {
-            System.out.println("THIS HAS RUN");
+            Log.d("SBE", "THIS HAS RUN");
             //this.mv.test();;
             this.mv.setMenus(k);
         }
@@ -111,4 +112,3 @@ public class MenuChooser extends LinearLayout{
     }
 
 }
-*/
